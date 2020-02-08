@@ -1,0 +1,880 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Momentum Plus</title>
+
+	<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width">
+
+<!-- Favicons -->
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144x144.png" />
+<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/apple-touch-icon-152x152.png" />
+<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+<meta name="application-name" content="Momentum Dash"/>
+<meta name="msapplication-TileColor" content="#ffffff" />
+<meta name="msapplication-TileImage" content="/mstile-144x144.png" />
+
+<!-- For Facebook -->
+<meta property="og:title" content="Momentum Dashboard" />
+<meta property="og:description" content="Replace new tab page with a personal dashboard featuring todo, weather, and inspiration." />
+<meta property="og:image" content="https://momentumdash.com/img/facebook-preview.jpeg" />
+<meta property="og:type" content="website" />
+
+	<style type="text/css">
+		/* Header */
+
+.header-wrapper { width: auto !important; margin: 0 auto; }
+
+.header { height: 75px; width: 100%; position: fixed; top: 0; z-index: 10; background-color: rgba(255,255,255,0.9); -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+	/*.header.scrolled { border-bottom-color: rgba(0,0,0,0.06); }*/
+	.header .logo { height: 74px; width: 74px; margin: 0; margin-right: 8px; padding: 12px; position: relative; float: left; display: inline-block; vertical-align: top; }
+		.header .logo img { max-height: 100%; background-size: cover; }
+			.header .logo:hover img { opacity: 0.8; }
+				.has-background.header .logo:hover img { opacity: 1; }
+		.header .logo a { position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 1; display: block; color: rgba(0,0,0,0); text-indent: -10000px; }
+
+	.header .clipped { position: absolute; height: 50px; clip-path: circle(25.5px at center); }
+
+
+	/* Main nav */
+
+	.main-nav { margin: 0; display: inline-block; }
+		.main-nav a { padding: 0 12px; display: inline-block; color: #999; cursor: pointer; float: left; font-size: 1rem; font-weight: 500; letter-spacing: -0.2px; line-height: 75px; text-decoration: none; -webkit-transition: color 0.1s ease; transition: color 0.1s ease; }
+			.main-nav a:hover { color: #555; }
+			.main-nav .active { color: #000 !important; }
+
+		.has-background .main-nav a { color: rgba(255,255,255,1); }
+			.has-background .main-nav a:hover { color: rgba(255,255,255,0.85); }
+
+
+	/* Header has background */
+
+	.has-background { background: none; }
+		.has-background .logo:hover img { opacity: 1; }
+
+		.has-background .main-nav a { opacity: 0.7; color: white; }
+			.has-background .main-nav a:hover { opacity: 0.85; }
+			.has-background .main-nav a:hover:active, .has-background .main-nav .active { opacity: 1 !important; color: white !important; }
+
+
+	/* Top right */
+
+	.top-right { margin-right: 12px; position: relative; float: right; }
+		.top-right .available-on { position: absolute; top: 16px; left: 0; right: 0; z-index: 0; font-size: 10px; letter-spacing: 1px; opacity: 0.45; text-align: center; text-transform: uppercase; white-space: nowrap; }
+			.has-background .available-on { color: #fff; opacity: 0.6; }
+
+		.top-right a { height: 75px; padding: 34px 8px 0; position: relative; z-index: 1; display: inline-flex; flex-direction: row; justify-content: center; color: #111; cursor: pointer; font-size: 14px; font-weight: 400; line-height: 20px; opacity: 0.6; text-decoration: none; vertical-align: top; }
+			.top-right a:hover { opacity: 0.75; }
+			.has-background .top-right a { color: white; opacity: 0.85; }
+				.has-background .top-right a:hover { opacity: 1; }
+				.has-background .top-right svg { fill: #fff; }
+
+			.top-right .available-links {  }
+				.top-right .available-links a { outline: none; }
+
+				.top-right .icon-browser { height: 20px; margin-right: 6px; }
+				.top-right .icon-firefox { height: 21px; }
+
+
+
+@media handheld and (max-width: 700px), screen and (max-device-width: 700px), screen and (max-width: 700px)  {
+
+	.header {  }
+		.header .logo {  }
+
+		.main-nav { float: right; }
+			.main-nav a:last-child { padding-right: 18px; }
+
+		.top-right { display: none; }
+}
+
+:root {
+	--accent-hue: 190;
+	--accent-comp: 87;
+	--accent-supp: 1;
+
+	--color-subheading: hsl(var(--accent-hue), 36%, 53%, 1);
+	--color-description: hsl(var(--accent-hue), 10%, 40%);
+	--color-grey: hsl(var(--accent-hue), 7%, 54%);
+
+	--button-color: hsl(109, 59%, 54%);
+	--button-color-active: hsl(94, 64%, 64%);
+}
+
+* { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+body, input, select { font-family: -apple-system, BlinkMacSystemFont, "Neue Haas Grotesk Text Pro", "Helvetica Neue", Helvetica, Arial, sans-serif; }
+
+body { margin: 0; background: #eef1f1; color: #333; visibility: hidden; }
+	body.show { visibility: visible; }
+	body.no-scroll { position: fixed; right: 0; left: 0; overflow-y: scroll; }
+
+@font-face {
+	font-family: 'Renner';
+	font-style: normal;
+	font-weight: 700;
+	src: url('/font/renner-bold.woff') format('woff2'), url('/font/renner-bold.woff') format('woff');
+}
+
+h1, h2, h3, h4, h5, h6 { font-family: Futura, Renner, sans-serif; font-weight: 700; }
+h2 { margin: 0 0 10px; font-size: 34px; }
+/*h3 { font-size: 160%; }*/
+
+p, blockquote, ul, ol { margin: 1em 0 1.5em; font-size: 1.25em; font-weight: 400; line-height: 1.75em; }
+pre, code { padding: 5px; background: #444; color: #fff; }
+pre { padding: 20px; line-height: 1.3em; }
+ul { margin: 0; padding: 0; list-style: none; }
+
+a { color: #08bac7; -webkit-transition: opacity 0.1s ease; transition: opacity 0.1s ease; }
+a:hover { opacity: 0.8; }
+
+
+
+/* Utilities */
+
+.hidden { visibility: hidden }
+.right { float: right; }
+.wrapper, .inside { width: 960px; margin-left: auto; margin-right: auto; }
+.border-bottom { border-bottom: 1px solid #ddd; }
+.u--mobile-only { display: none; }
+
+
+/* Header */
+
+.header { position: absolute; }
+
+
+/* General */
+
+.content { margin-top: 0px; }
+.subheading { margin: 0.75rem 0 3rem; color: var(--color-description); font-size: 130%; font-weight: 300; line-height: 140%; }
+.button { padding: 20px 40px; display: inline-block; backface-visibility: hidden; background: var(--button-color); border: none; border-radius: 100px; color: white; cursor: pointer; font-weight: 700; outline: none; text-decoration: none; -webkit-user-select: none; user-select: none; }
+	.button:hover { box-shadow: 0 5px 30px rgba(0,0,0,0.25); opacity: 1; -webkit-transform: scale(1.025) translateY(-1px) translateZ(0); transform: scale(1.025) translateY(-1px) translateZ(0); transition: all 0.2s ease; }
+	.button:hover:active { background: var(--button-color-active); transition: background 0s linear; }
+
+
+
+/* Hero */
+
+.hero { height: 70%; min-height: 600px; position: relative; display: flex; flex-direction: column; justify-content: center; background: hsla(var(--accent-hue), 37%, 42%, 1); color: #fff; font-size: 18px; text-align: center; }
+	.hero-bg { position: absolute; top: 0; right: 0; bottom: 0; left: 0; background-image: url("/img/plus/bg0.jpg"); background-size: cover; background-position: 50% 15%; content: ''; opacity: 0; -webkit-transition: opacity 0.2s ease; transition: opacity 0.2s ease; }
+	.hero .wrapper { width: 960px; position: relative; z-index: 1; text-shadow: 0 0 25px rgba(0,0,0,0.05); }
+		.hero .wrapper:before { position: absolute; top: -60px; right: 40px; bottom: -60px; left: 40px; z-index: -1; background: hsla(var(--accent-hue),30%,30%,0.5); border-radius: 50%; content: ''; -webkit-filter: blur(50px); filter: blur(50px); opacity: 0; -webkit-transition: opacity 0.2s ease; transition: opacity 0.2s ease; }
+		.hero h2 { margin: 0 0 5px; font-size: 54px; letter-spacing: -0.3px; }
+		.hero .subheading { width: 100%; margin: 2px auto 10px; color: #fff; font-size: 130%; opacity: 0.9; }
+	.hero.fadein .hero-bg, .hero.fadein .wrapper:before { opacity: 1; }
+
+
+	/* Upgrade CTA */
+
+	.cta-wrapper { width: 100%; margin-bottom: -50px; position: relative; z-index: 10; }
+
+	.cta { width: 960px; padding: 50px; border-radius: 1px; color: #fff; text-align: center; }
+		.cta .button { min-width: 0; padding: 15px 60px 14px; box-shadow: 0 8px 30px rgba(0,0,0,0.2); color: #fff; font-size: 15px; line-height: 150%; text-transform: uppercase; transition: transform 0.32s ease; }
+			.top-cta .button { margin: 20px 0 2px; }
+
+		.cta .pricing { margin-top: 10px; font-size: 0.8125rem; line-height: 1.4; }
+
+		.button-upgrade { margin: auto; padding: 15px 39px; display: inline-block; }
+
+		.price { margin: 16px 0 4px; display: block; color: rgba(255,255,255,0.8); font-size: 16px; }
+			.price strike { opacity: 1; }
+			.price .year-first, .show-month .month-first { display: none; }
+				.price .month-first .month-price { font-weight: 600; }
+			.show-month .year-first { display: block; }
+			/*.price .sale-info { margin-top: 4px; font-weight: 500; text-transform: uppercase; }*/
+
+	.top-cta { width: auto; margin: 0px auto; padding: 0; background: none; }
+
+
+	.gift-section { margin-top: 15px; }
+		.bottom-cta .gift-section { margin-top: 37px; opacity: 0.99; }
+		.gift-section .gift-heading { margin-right: 14px; font-size: 15px; font-weight: 600; text-transform: uppercase; }
+		.gift-section .button-gift { margin: 8px 0 0 7px; padding: 8px 20px; background: #fff; color: #555; font-size: 14px; }
+			.gift-section .button-gift:active { background: white; color: #999; }
+
+
+	/* Single Features */
+
+	.panel-key-features { background: #eef1f1; }
+
+	.feature-wrapper { position: relative; }
+
+	.feature { height: 360px; width: 960px; margin: -50px auto 65px; padding: 60px; position: relative; background: #fff; border-radius: 3px; box-shadow: 0 1px 35px rgba(0,0,0,0.05); overflow: hidden; }
+		.feature-last { margin-bottom: 90px; }
+
+			.feature-img { height: 100%; float: right; text-align: right; }
+				.feature-right .feature-img { float: left; text-align: left; }
+					.feature-img img { max-height: 100%; max-width: 100%; }
+
+				.full-bleed .feature-img { height: 360px; width: auto; margin: 0; padding: 0; position: absolute; top: 0; right: 0; bottom: 50px; left: 0; }
+
+
+			.feature-content { height: 100%; width: 45%; position: relative; display: flex; flex-direction: column; justify-content: center; /* height: 300px; display: flex; flex-direction: column; justify-content: center; */ }
+				.feature-right .feature-content { margin-left: 50%; }
+				.feature-content p:last-child { margin-bottom: 1px; }
+
+				.feature .feature-name { margin-bottom: 2px; opacity: 1; color: var(--color-subheading); font-size: 13px; font-weight: 700; letter-spacing: 0.2px; line-height: 1.3; text-transform: uppercase; }
+					.feature-sync .feature-name { margin-top: 0; }
+				.feature h3 { margin: 14px 0; opacity: 0.95; font-size: 30px; line-height: 1.3; }
+				.feature h6 { margin: 20px 0 4px; color: var(--color-grey); font-weight: 500; text-transform: uppercase; }
+				.feature p { margin: 0; color: hsla(190, 5%, 41%, 1); font-size: 17px; line-height: 1.6; }
+
+			.feature-theme .feature-img { height: 110%; margin-top: -10px; margin-right: -20px; }
+
+			.feature-quotes .feature-img { height: 90%; margin-top: 20px; }
+
+		.supported { }
+		.supported-icon { height: 24px; width: 24px; padding: 6px; position: relative; display: inline-block; box-sizing: content-box; vertical-align: top; }
+			.supported-icon.first { margin-left: -6px; }
+			.supported-icon img { height: 100%; }
+			.supported .supported-description { margin-top: 5px; position: absolute; left: 50%; display: none; font-size: 87.5%; opacity: 0.7; -webkit-transform: translateX(-50%); transform: translateX(-50%); white-space: nowrap; }
+			.supported .coming-soon img { opacity: 0.35; }
+			.supported-icon:hover .supported-description { display: block; }
+
+		.feature-sale { height: auto; padding: 40px; background: linear-gradient(62deg, hsla(169, 46%, 57%, 1) 0%, hsla(188, 55%, 51%, 1) 85%); color: white; text-align: center; }
+			.feature-sale .feature-label { margin-bottom: 0.7rem; opacity: 0.6; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.4px; text-transform: uppercase; }
+
+			.feature-sale .feature-title { margin: 0.7rem 0; font-size: 36px; }
+
+			.feature-sale .feature-description { margin: -5px 0; opacity: 0.8; color: white; font-size: 18px; font-weight: 500; line-height: 200%; }
+
+				/*.feature-sale .special { margin-left: 15px; padding: 6px 10px; background: rgba(255,255,255,0.2); border-radius: 3px; color: rgba(255,255,255,0.95); font-size: 0.875rem; }*/
+			/*
+			.feature-sale .button { margin-bottom: -6px; padding: 15px 60px; position: relative; z-index: 1; background: white; color: #4a9a97; font-size: 15px; text-transform: uppercase; transition: all 0.3s ease; }
+				.feature-sale .button:hover { opacity: 1; box-shadow: 0 6px 20px rgba(0,0,0,0.15); color: #50b9bb; transform: translateY(-1px) scale(1); }
+			.feature-sale .button-description { margin: 1rem 0 -6px; opacity: 0.9; color: white; font-size: 1rem; font-weight: 700; }
+			*/
+
+			.feature-sale .ball { height: 500px; width: 500px; display: block; position: absolute; top: -310px; left: -100px; z-index: 0; background: linear-gradient(221deg, rgba(255,255,255,0) 25%, rgba(255, 255, 255, 0.1) 100%); border-radius: 100%; }
+				.feature-sale .ball2 { height: 600px; width: 600px; top: -334px; left: 131px; background: linear-gradient(221deg, rgba(255,255,255,0) 25%, rgba(255, 255, 255, 0.1) 100%); }
+				.feature-sale .ball3 { height: 740px; width: 740px; top: -66px; left: 560px; background: linear-gradient(221deg, rgba(255,255,255,0) 25%, rgba(255, 255, 255, 0.15) 100%); }
+
+
+
+	/* Feature List */
+
+	.features { background: rgba(255,255,255,1); text-align: center; }
+		.features .wrapper { width: 960px; margin: 0 auto; padding: 80px 0; }
+
+		.features h3 { margin: 0 0 7px; font-size: 212.5%; }
+
+		.features-list { column-count: 2; column-gap: 20px; column-fill: auto; text-align: left; }
+			.features .suggest { color: #666; }
+
+			.features li { width: 100%; margin-bottom: 14px; padding: 0 3rem; position: relative; display: inline-block; font-size: 1.125rem; line-height: 1.5; text-align: left; vertical-align: top; }
+				.features .check { height: 20px; position: absolute; left: 10px; top: 3px; /* color: #37999f; */ fill: #08c754; }
+				.features .coming-soon { margin-top: 3px; margin-left: 4px; padding: 0px 5px; display: inline-block; background: #f6f6f6; border-radius: 3px; color: rgba(0,0,0,0.45); font-size: 60%; line-height: 180%; text-transform: uppercase; vertical-align: top; }
+				.features .new { margin-left: 6px; position: relative; top: -1px; color: #7fd13d; font-size: 0.75rem; font-weight: 700; }
+
+		.blurb { margin-top: 40px; font-size: 105%; font-weight: 300; opacity: 0.6; }
+
+
+
+	/* Feature Comparison Container & Button */
+
+.comparison { margin: -50px 0 0; padding-bottom: 80px; background: #fff; }
+
+	.see-comparison { text-align: center; }
+		.see-comparison-button { --button-color: hsla(197, 20%, 50%, 0.9); padding: 10px 16px; display: inline-block; border: 1px solid var(--button-color); border-radius: 3px; color: var(--button-color); cursor: pointer; font-size: 0.875rem; text-decoration: none; user-select: none; }
+			.see-comparison-button:hover { --button-color: hsla(197, 13%, 50%, 1); }
+
+
+
+	/* Bottom Call to Action */
+	.bottom-cta { width: auto; margin: 0 auto; padding: 120px 0; position: relative; /* #2fa8bb; #35a3a2;*/ background-image: url("/img/plus/bg0.jpg"); background-position: 50% 10%; background-size: cover; }
+		.bottom-cta:before { background: hsla(var(--accent-hue), 42%, 46%, 0.9); position: absolute; top: 0; right: 0; bottom: 0; left: 0; content: ' '; z-index: 0; }
+		.bottom-cta h2 { position: relative; font-size: 40px; }
+		.bottom-cta .subheading { color: #dcf9ff; }
+		.bottom-cta p { position: relative; }
+		.bottom-cta div { position: relative; }
+		.bottom-cta .pricing { margin: 17px 0 -10px; opacity: 0.65; color: #dcf9ff; }
+		.bottom-cta .special { margin-top: -3px; font-size: 90%; }
+
+
+/* Team contact form */
+.team-signup-wrapper { padding: 30px 0; position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 1000; display: none; background-color: transparent; transition: background-color 0.5s ease; overflow-y: auto; }
+	.team-signup-wrapper.show-start { display: flex; }
+.team-signup-wrapper.show-end { background-color: rgba(0,0,0,0.5); }
+
+	.team-signup { --padding: 32px; width: 400px; max-width: calc(100% - 40px); margin: auto; position: relative; opacity: 0; background: white; border-radius: 3px; box-shadow: 0 7px 30px rgba(0,0,0,0.1); text-align: left; transform: translateY(-0.75rem); transition: all 0.5s ease; }
+		.show-end > .team-signup { opacity: 1; transform: translateY(0); }
+
+		.team-signup-close { --size: 60px; height: var(--size); width: var(--size); position: absolute; top: 0; right: 0; z-index: 1; display: flex;  align-items: center; justify-content: center; opacity: 0.3; cursor: pointer; transition: opacity 0.1s ease; }
+			.team-signup-close:hover { opacity: 0.6; }
+			.team-signup-close:hover:active { opacity: 0.8; }
+			.team-signup-close .icon { height: 10px; }
+
+
+		.team-signup-form { padding: var(--padding); }
+			.team-signup-form.hide { opacity: 0; visibility: hidden; }
+
+			.team-signup header { margin-bottom: 2rem; text-align: center; }
+				.team-signup h3 { margin: 0 0 0.3rem; font-size: 1.625rem; font-weight: 500; }
+				.team-signup .heading-description { margin: 0; opacity: 0.45; font-size: 1rem; }
+
+
+			.team-signup main { padding: 0 0.4rem; }
+				.team-signup input, .team-signup select, .team-signup textarea { width: 100%; }
+
+				.input-group { margin-bottom: 1.3rem; }
+				label, input, select { width: 100%; display: block; }
+				label { margin-bottom: 0.4rem; opacity: 0.8; font-size: 0.875rem; font-weight: 500; }
+				input, select, textarea { padding: 11px; background: hsl(190, 2%, 96%); box-shadow: inset 0 0 0 1px rgba(0,0,0,0.2); border-radius: 3px; border: none; font-size: 1rem; outline: none; }
+					input:hover, select:hover, textarea:hover { background-color: hsl(190, 2%, 96.5%); }
+					input:focus, select:focus, textarea:focus { box-shadow: inset 0 0 0 1px rgba(0,0,0,0.35); }
+
+				select { padding-right: 30px; -webkit-appearance: none; -moz-appearance: none; appearance: none; background-image: url('../img/icon/down.svg'); background-position: calc(100% - 3px) 50%; background-repeat: no-repeat; background-size: 20px; }
+					.Firefox select { padding-top: 13px; padding-bottom: 13px; color: rgba(0,0,0,0); text-shadow: 0 0 0 #000; }
+
+
+			.team-signup footer { margin-top: 2rem; text-align: center; }
+				.team-signup-message { margin: 0 0 1rem; display: none; color: hsl(187, 51%, 51%); font-size: 0.875rem; font-weight: 500; text-align: center; }
+				.team-signup .button { width: 62%; padding: 14px; background: hsl(187, 55%, 55%); box-shadow: none; font-size: 0.9375rem; font-weight: 600; }
+					.team-signup .button:hover { background: hsl(187, 55%, 59%); box-shadow: none; }
+					.team-signup .button:hover:active { background: hsl(187, 55%, 65%); transition-duration: 0s; }
+
+
+		.team-signup-thanks { padding: var(--padding); position: absolute; top: 0; right: 0; bottom: 0; left: 0; display: none; flex-direction: column; align-items: center; justify-content: center; }
+			.team-signup-thanks.show { display: flex; }
+			.team-signup-thanks .button { width: 50%; margin-top: 2rem; }
+
+
+
+/* Bottom */
+
+.bottom { background: rgba(240,244,245,0.6); }
+
+
+
+/* Testimonial */
+
+.testimonials { position: relative; overflow: hidden; transition: all 0.5s ease; }
+	.testimonial { position: absolute; left: 50%; transform: translateX(-50%); top: 0; max-width: 700px; margin: 0 auto; padding: 100px 0; text-align: center; transition: all 0.5s ease; user-select: text; }
+		.testimonial.hidden { display: none; }
+		.testimonial.slide-out { position: absolute; opacity: 0; transform: translateX(-95%); }
+		.testimonial.slide-in { position: absolute; opacity: 0; transform: translateX(0%); }
+
+		.testimonial.slide-out-right { position: absolute; opacity: 0; transform: translateX(0%); }
+		.testimonial.slide-in-right { position: absolute; opacity: 0; transform: translateX(-100%); }
+
+		.testimonial-body { padding: 50px; background: rgba(255,255,255,0.8); border-radius: 5px; font-style: italic; font-size: 19px; line-height: 1.7; text-align: left; }
+			.testimonial .quote { font-family: "Helvetica Neue", Arial, sans-serif; }
+			.testimonial mark { background: hsl(var(--accent-hue), 31%, 89%); color: inherit; }
+
+		.testimonial-attribution { margin: -27px 0 -18px; }
+			.testimonial img { height: 80px; margin-bottom: 8px; border-radius: 100%; box-shadow: 0 6px 12px rgba(0,0,0,0.06); vertical-align: top; }
+			.testimonial cite { margin: 0 20px; display: block; opacity: 0.7; font-size: 14px; font-style: normal; font-weight: 700; line-height: 1.3; text-transform: uppercase; }
+
+
+
+	.testimonials .control { padding: 0 10px; position: absolute; top: 0; bottom: 0; z-index: 2; display: flex; flex-direction: column; align-items: center; justify-content: center; box-sizing: content-box; cursor: pointer; transition: all 0.15s ease; }
+		.testimonials .control:hover { background: rgba(255,255,255,0.35); }
+		.testimonials .control:active { background: rgba(255,255,255,0.7); }
+	.testimonials .prev { left: 0; }
+	.testimonials .next { right: 0; }
+		.testimonials .icon-wrapper { height: 70px; width: 70px; border-radius: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+
+			.testimonials .icon { height: 34px; opacity: 0.3; transition: all 0.15s ease; }
+				.testimonials .control:hover .icon { opacity: 0.5; }
+				.testimonials .control:active .icon { opacity: 0.7; }
+
+			.testimonials .prev-icon { margin-right: 4px; transform: rotate(180deg); }
+			.testimonials .next-icon { margin-left: 4px; }
+
+.u--no-transition { transition: none !important; }
+
+
+/* Loved */
+
+.loved { padding: 80px 20px 85px; background: rgba(255,255,255,1); text-align: center; }
+.loved h3 { margin: 0 0 10px; font-size: 212.5%; }
+.loved .logos { margin: 0; }
+	.loved .logos img { height: 72px; }
+
+
+.loved .pic { width: 100px; margin: 45px 0 0; height: 100px; border: 3px solid #eee; border-radius: 200px; } /* Same as about page */
+
+
+
+/* FAQ */
+
+.faq { width: 960px; margin: 0 auto; padding: 90px 0 0; }
+.faq h4 { margin: 0 0 35px; font-size: 80%; font-weight: 600; opacity: 0.4; text-align: center; text-transform: uppercase; }
+.faq h4 { display: none; }
+.faq .questions { width: 80%; margin-left: auto; margin-right: auto; font-size: 115%; }
+	.faq li { width: 50%; margin-bottom: 2rem; padding: 0 40px; display: inline-block; vertical-align: top; }
+	.faq p { margin: 0; }
+	.faq .question { margin-bottom: 0.5rem; opacity: 0.8; font-size: 17px; font-weight: 600; line-height: 1.5; }
+	.faq .answer { color: rgba(0,0,0,0.65); font-size: 16px; line-height: 1.6; opacity: 0.7; }
+	.faq a { color: rgba(0,0,0,0.65); }
+
+
+
+/* Footer links */
+
+.footer { margin: 40px 0 60px; }
+
+	.footer-link { margin: 0.75rem; text-align: center; }
+		.footer-link p { margin: 0; padding: 0; color: rgba(0,0,0,0.65); font-size: 1rem; }
+		.footer-link a { margin-left: -2px; padding: 5px; color: hsl(var(--accent-hue), 41%, 47%); cursor: pointer; text-decoration: none; }
+			.footer-link a:hover { text-decoration: underline; }
+
+
+
+/* Animations */
+
+.fadein { opacity: 1 !important; -webkit-transform: translateY(0); transform: translateY(0); }
+.fadeout { -webkit-animation: fadeout 0.5s ease 0s forwards; }
+
+@-webkit-keyframes fadeout { from { opacity: 1 } to { opacity: 0 } }
+@keyframes fadeout { from { opacity: 1 } to { opacity: 0 } }
+
+
+
+/* Responsive action */
+
+@media handheld and (max-width: 1200px), screen and (max-device-width: 1200px), screen and (max-width: 1200px)  {
+	.wrapper { width: 960px; }
+}
+
+
+@media handheld and (max-width: 980px), screen and (max-device-width: 980px), screen and (max-width: 980px)  {
+	.header .wrapper { margin: 0; }
+
+	.hero .subheading { width: auto; }
+
+	.wrapper, .features .wrapper, .hero .wrapper, .faq { width: auto; margin-left: 20px; margin-right: 20px; }
+
+	.feature { min-height: 360px; width: auto; margin-left: 20px; margin-right: 20px; margin-bottom: 70px; }
+		.feature-sale { min-height: auto; }
+
+	.features-list { margin-left: 0; }
+		.features li { padding: 0 0 0 44px; }
+		.features .check { left: 10px; }
+
+	.faq .questions { width: auto; }
+}
+
+
+@media handheld and (max-width: 740px), screen and (max-device-width: 740px), screen and (max-width: 740px)  {
+	.u--mobile-only { display: block; }
+
+	.main-nav { float: right; }
+		.main-nav a:last-child { padding-right: 18px; }
+
+	.feature { height: auto; padding-left: 40px; padding-right: 40px; }
+		.feature-skip h3 { margin-right: 0; }
+		.feature-img { margin-top: 0 !important; height: 180px !important; float: none !important; text-align: center !important; }
+		.feature-content { width: auto; margin-top: 40px; }
+			.feature-right .feature-content { margin-left: 0; }
+
+		.full-bleed .feature-img { height: 220px !important; right: 0; bottom: auto; left: auto; }
+			.feature-right.full-bleed .feature-img { left: 0; right: auto; }
+		.full-bleed .feature-content { margin-top: 220px; }
+
+	.testimonial { width: 100%; }
+		.testimonial-body { margin: 0 20px; padding: 40px 40px; }
+		.testimonial-attribution { margin: -20px 0 -30px; }
+
+		.testimonials .control { width: auto; background: none !important; }
+
+			.testimonials .icon-wrapper { --size: 40px; height: var(--size); width: var(--size); background: white; box-shadow: 0 6px 15px rgba(0,0,0,0.075); }
+				.testimonials .control:active .icon-wrapper { background: #222; }
+
+				.testimonials .icon { height: calc(var(--size) * 0.5); }
+					.testimonials .control:active .icon { fill: white; opacity: 1; }
+
+	.logos img { height: auto !important; max-width: 100%; }
+
+	.faq li { width: auto; padding: 0;  }
+
+	.bottom-cta { padding: 90px 20px; }
+}
+	</style>
+</head>
+<body class="plus ">
+	
+	<header class="header has-background">
+		<h1 class="logo"><a href="/" class="accent-bg-img">Momentum Dash</a><div class="clipped"><img src="/img/logo-white.png"></div></h1>
+
+		<nav class="main-nav">
+			<a href="/plus" class="active">Plus</a>
+			<a href="/about">About</a>
+			<a href="/blog">Blog</a>
+		</nav>
+	</header>
+
+	<section class="content">
+		<div class="hero ">
+			<div class="hero-bg"></div>
+			<div class="wrapper">
+				<h2>Hello, Momentum Plus.</h2>
+				<p class="subheading">Enjoy added customization, integrations, widgets, and more!</p>
+
+				<div class="cta top-cta">
+					<!--<h3>Upgrade today and turn your potential into progress</h3>-->
+					<a href="https://account.momentumdash.com/upgrade" class="button button-upgrade" onclick="ga('send', 'event', 'Plus', 'Upgrade', 'Hero click')">Upgrade Now</a>
+					<span class="price">
+						<!-- Sale -->
+													<span class="month-first">Get started for only <strong class="month-price">$3.33/month</strong>!</span>
+												</span>
+				</div>
+			</div>
+		</div>
+
+		<section class="panel panel-key-features">
+			<!-- Sale & Promo -->
+			
+			<div class="feature feature-first feature-sync">
+				<div class="feature-img"><img src="/img/plus/feature-sync.gif"></div>
+				<div class="feature-content">
+					<p class="feature-name">To-do integrations</p>
+					<h3>Sync with other task managers</h3>
+					<p>Level up your productivity by syncing your tasks with Asana, Basecamp, GitHub, Bitbucket, Google Tasks, Todoist, Trello, and Wunderlist.</p>
+					<div class="supported">
+						<h6>Supported</h6>
+						<span class="supported-icon first"><img src="/img/icons/asana.svg"><span class="supported-description">Asana</span></span><!--
+						--><span class="supported-icon"><img src="/img/icons/basecamp.svg"><span class="supported-description">Basecamp</span></span><!--
+						--><span class="supported-icon"><img src="/img/icons/bitbucket.svg"><span class="supported-description">Bitbucket</span></span><!--
+						--><span class="supported-icon"><img src="/img/icons/github.png"><span class="supported-description">GitHub</span></span><!--
+						--><span class="supported-icon"><img src="/img/icons/google-tasks.jpg"><span class="supported-description">Google Tasks</span></span><!--
+						--><span class="supported-icon"><img src="/img/icons/todoist.png"><span class="supported-description">Todoist</span></span><!--
+						--><span class="supported-icon"><img src="/img/icons/trello.svg"><span class="supported-description">Trello</span></span><!--
+						--><span class="supported-icon"><img src="/img/icons/wunderlist.png"><span class="supported-description">Wunderlist</span></span>
+					</div>
+				</div>
+			</div>
+
+			<div class="feature feature-right full-bleed feature-skip">
+				<div class="feature-img"><img src="/img/plus/feature-backgrounds.jpg"></div>
+				<div class="feature-content">
+					<p class="feature-name">Change the backgrounds and quotes</p>
+					<h3>See the photos that inspire you the most</h3>
+					<p>Light yourself up every time you open a new tab. Add your own images or choose from your Momentum favorites.</p>
+				</div>
+			</div>
+
+			<div class="feature feature-theme">
+				<div class="feature-img"><img src="/img/plus/feature-theme.gif"></div>
+				<div class="feature-content">
+					<p class="feature-name">Customize fonts and colors</p>
+					<h3>Personalize your experience</h3>
+					<p>Make Momentum your own by choosing a font and color that suits your personality.</p>
+				</div>
+			</div>
+
+			<div class="feature feature-right feature-quotes">
+				<div class="feature-img"><img class="feature-quotes-img" src="/img/plus/feature-quotes.gif"></div>
+				<div class="feature-content">
+					<p class="feature-name">Custom quotes</p>
+					<h3>See your favorite quotes</h3>
+					<p>Add your favorite quotes to maximize your inspiration. Set the quote of the day to anything you want, anytime.</p>
+				</div>
+			</div>
+
+			<div class="feature full-bleed">
+				<div class="feature-img"><img src="/img/plus/feature-autofocus.jpg"></div>
+				<div class="feature-content">
+					<p class="feature-name">Autofocus mode</p>
+					<h3>Automatically see your current up task</h3>
+					<p>Set your priorities at the start of the day and see your current task in your focus.</p>
+				</div>
+			</div>
+
+			<div class="feature feature-right full-bleed feature-skip">
+				<div class="feature-img"><img src="/img/plus/feature-skip.jpg"></div>
+				<div class="feature-content">
+					<p class="feature-name">Skip photo/quote</p>
+					<h3>More daily photos and quotes</h3>
+					<p>Not feeling the photo or quote of the day, or just ready for something fresh? A new one is just a click away.</p>
+				</div>
+			</div>
+
+			<div class="feature feature-multi-todo feature-last">
+				<div class="feature-img"><img src="/img/plus/feature-lists.gif"></div>
+				<div class="feature-content">
+					<p class="feature-name">Multiple to-do lists</p>
+					<h3>Improve your task organization</h3>
+					<p>Add multiple to-do lists to better manage your personal productivity and focus.</p>
+				</div>
+			</div>
+		</section>
+
+		<section class="features">
+			<div class="wrapper">
+				<h2>What's included?</h2>
+				<p class="subheading">Everything you see below. Plus we are adding more features all the time.</p>
+				<ul class="features-list">
+					<li><img src="/img/plus/check.svg" class="check">To-do integrations</li>
+					<li><img src="/img/plus/check.svg" class="check">Add your own photos, quotes &amp; mantras</li>
+					<li><img src="/img/plus/check.svg" class="check">Countdowns, Metrics<span class="new">NEW</span>, Notes, & World Clocks</li>
+					<li><img src="/img/plus/check.svg" class="check">Autofocus mode: See your to-do list one focus at a time</li>
+					<li><img src="/img/plus/check.svg" class="check">Tab Groups: Simplify workflows by opening multiple websites in one click<span class="new">NEW</span></li>
+					<li><img src="/img/plus/check.svg" class="check">Change to a new photo/quote/mantra anytime</li>
+					<li><img src="/img/plus/check.svg" class="check">Add multiple to-do lists and colorize them</li>
+					<li><img src="/img/plus/check.svg" class="check">Hourly forecast and detailed weather conditions from Accuweather</li>
+					<li><img src="/img/plus/check.svg" class="check">Customize color and font theme</li>
+					<li><img src="/img/plus/check.svg" class="check">Priority customer support</li>
+					<li><img src="/img/plus/check.svg" class="check">Access to all future features and integrations</li>
+					<li><img src="/img/plus/check.svg" class="check">Support new Momentum development</li>
+				</ul>
+			</div>
+		</section>
+
+	<section class="comparison">
+		<div class="wrapper">
+			<div class="see-comparison"><span class="see-comparison-button">See the full feature comparison</span></div>
+		</div>
+	</section>
+
+
+	<section class="cta bottom-cta">
+		<h2>Upgrade to Plus today</h2>
+		<p class="subheading">Turn your potential into progress</p>
+		<div>
+			<a href="https://account.momentumdash.com/upgrade" class="button button-upgrade" onclick="ga('send', 'event', 'Plus', 'Upgrade', 'Bottom bar click')">Upgrade Now</a>
+		</div>
+					<p class="pricing">Get started for only $3.33/month (billed yearly) or $4.95/month (billed monthly)<br>
+				</section>
+
+
+	<section class="bottom">
+		<div class="testimonial-container"></div>
+		<div class="loved">
+			<h2>Loved by millions</h2>
+			<p class="subheading">Top performers in the world excel with the help of Momentum.</p>
+			<p class="logos">
+				<img src="/img/plus/logos.gif">
+			</p>
+		</div>
+
+		<div class="faq">
+			<h4>Frequently Asked Questions</h4>
+			<ul class="questions">
+				<li>
+					<p class="question">What are my payment options?</p>
+					<p class="answer">Momentum accepts payments by credit card, including Visa, MasterCard, and American Express.</p>
+				</li><li>
+					<p class="question">How soon can I use the Plus features?</p>
+					<p class="answer">Right away! Once you upgrade, your account will have access to all Plus features.</p>
+				</li><li>
+					<p class="question">What is your cancellation/refund policy?</p>
+					<p class="answer">You can cancel your membership any time on your account’s <a href="https://account.momentumdash.com/subscription">Subscription page</a>. Your membership will remain active until the end of the billing period.</p>
+				</li><li>
+					<p class="question">Can I use Momentum Plus on multiple computers?</p>
+					<p class="answer">Yes! You can log in to your Momentum Plus account at home, work, school or wherever else you heart desires!</p>
+				</li>
+
+			</ul>
+		</div>
+
+		<footer class="footer">
+			<div class="footer-link gift">
+				<p>Looking to gift a Momentum Plus subscription? <br class="u--mobile-only" /><a href="/gift">Gift Momentum</a></p>
+			</div>
+
+			<div class="footer-link contact">
+				<p>Have a question? <br class="u--mobile-only" /><a href="/contact">Contact a human</a></p>
+			</div>
+
+			<div class="footer-link team">
+				<p class="team">Looking to subscribe as a team? <br class="u--mobile-only" /><a href="" class="show-team-signup" onclick="ga('send', 'event', 'Team', 'Signup click', 'Plus')">Get early access</a></p>
+
+				<div class="team-signup-wrapper">
+					<div class="team-signup">
+						<form class="team-signup-form">
+							<header>
+								<h3>Get early access</h3>
+								<div class="heading-description">Sign up for Momentum Team</div>
+							</header>
+
+							<main>
+								<div class="input-group">
+									<label for="companyName">Team / Company</label>
+									<input type="text" name="companyName" required="false">
+								</div>
+
+								<div class="input-group">
+									<label for="name">Name</label>
+									<input type="text" name="name" required="false">
+								</div>
+
+								<div class="input-group">
+									<label for="email">Email</label>
+									<input type="email" name="email" required="false">
+								</div>
+
+								<div class="input-group">
+									<label for="companySize">Team Size</label>
+									<div class="select-wrapper">
+										<select name="companySize" required="false">
+											<option disabled selected></option>
+											<option value="1 - 10">1 - 10</option>
+											<option value="11 - 30">11 - 30</option>
+											<option value="31 - 100">31 - 100</option>
+											<option value="101 - 300">101 - 300</option>
+											<option value="300+">300+</option>
+										</select>
+									</div>
+								</div>
+							</main>
+
+							<footer>
+								<div v-if="error" class="team-signup-message">Something went wrong. Please try again.</div>
+
+								<input type="submit" class="button team-signup-button" value="Sign Up">
+							</footer>
+						</form>
+
+
+						<div class="team-signup-thanks">
+							<h3>Thank you for signing up!</h3>
+							<div class="heading-description">We'll contact you with next steps.</div>
+
+							<button class="button team-signup-back">Ok</button>
+						</div>
+
+
+						<span class="team-signup-close">
+							<img class="icon icon-hide" src="/img/icon/close.svg">
+						</span>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+
+	</div>
+	</section>
+	<script src="/js/jquery.min.js"></script>
+
+	<script>
+		if (window.location.hash !== '#compare') document.body.className += ' show'
+	</script>
+
+	<script src="/app/plus.js?18-01-09-1"></script>
+
+	<script>
+		$(function() {
+			var loaded = false
+			if ($(window).scrollTop() > 3000) {
+				loadTestimonials()
+			}
+			$(window).on('scroll', function() {
+				loadTestimonials()
+			})
+			$(window).on('resize', function() {
+				setTestimonialHeight()
+			})
+
+			function loadTestimonials() {
+				if (loaded) return
+				$('.testimonial-container').load('/plus-testimonials.php',
+					function() {
+						setTestimonialHeight()
+						loaded = true
+					})
+			}
+
+			function setTestimonialHeight() {
+				var originalHeight = $('.testimonial.active').height()
+				var padding = $('.testimonial').css('padding-top').replace('px', '')
+				$('.testimonials').css('height', originalHeight + Number(padding) * 2)
+				$('.testimonials').removeClass('u--no-transition')
+			}
+
+
+
+			/* Team Signup Form */
+
+			var documentScrollTop,
+				$form = $('.team-signup-form'),
+				$thanks = $('.team-signup-thanks'),
+				$signupContainer = $('.team-signup-wrapper'),
+				$submitButton = $('.team-signup-button'),
+				$formMessage = $('.team-signup-message'),
+				$body = $(document.body),
+				html = document.documentElement
+
+			// Open form
+			$('.show-team-signup').on('click', function(e) {
+				e.preventDefault()
+
+				$signupContainer.addClass('show-start').outerWidth()
+				$signupContainer.addClass('show-end')
+
+				$form.removeClass('hide')
+				$thanks.removeClass('show')
+				documentScrollTop = html.scrollTop
+				$body.css('top', documentScrollTop * -1)
+				$body.addClass('no-scroll')
+			})
+
+			// Block clicking in form from propagating to the overlay and closing the form
+			$form.click(function(e) {
+				e.stopPropagation()
+			})
+
+			// Close form
+			$('.team-signup-close, .team-signup-wrapper, .team-signup-back').click(function() {
+				$signupContainer.removeClass('show-end')
+				setTimeout(function() {
+					$signupContainer.removeClass('show-start')
+				}, 500)
+				$body.css('top', '')
+				$body.removeClass('no-scroll')
+				$(html).scrollTop(documentScrollTop)
+			})
+
+			// Submit form
+			function onSuccess() {
+				$formMessage.hide()
+				$submitButton.val('Sign Up')
+				$form.addClass('hide')
+				$thanks.addClass('show')
+			}
+
+			function onError(error) {
+				$formMessage.show()
+				$submitButton.val('Sign Up')
+				console.log(error)
+			}
+
+			function submitSignupForm(e) {
+				e && e.preventDefault()
+				$formMessage.hide()
+				var formInfoObject = {}
+				ga('send', 'event', 'Team', 'Signup submit', 'Plus')
+				$form.serializeArray().forEach(function(input) { formInfoObject[input.name] = input.value })
+				$.ajax('https://api.momentumdash.com/team/start', {
+					type: 'POST',
+					processData: false,
+					data: JSON.stringify(formInfoObject),
+					success: onSuccess,
+					error: onError
+				})
+
+				$submitButton.val('Signing Up…')
+			}
+
+			$form.submit(submitSignupForm)
+
+					})
+
+		setTimeout(function(){
+			var ga_sessionid = sessionStorage.getItem('ga_sessionid')
+			if (ga_sessionid) {
+				$('a.button-upgrade').attr('href', 'https://account.momentumdash.com/upgrade?session=' + ga_sessionid)
+			}
+		},100)
+
+
+	</script>
+
+	<script async src="/app/analytics.js"></script>
+
+</body>
+</html>

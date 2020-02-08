@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Give the gift of Momentum Plus</title>
+	<meta name="viewport" content="width=device-width">
+	<link href="/dist/css/gift.178c3255.css" rel=preload as=style>	<link href="/dist/js/chunk-vendors.80770947.js" rel=preload as=script>	<link href="/dist/js/gift.338c1adb.js" rel=preload as=script>	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="/css/inside.css?v=20190904">
+	<link rel="stylesheet" href="/css/header.css?v=20191212">
+	<link rel="stylesheet" href="/css/gift.css?v=20180525">
+	<link href="/dist/css/gift.178c3255.css" rel=stylesheet></head>
+<body class="gift">
+	
+	<header class="header has-background">
+		<div class="wrapper header-wrapper">
+			<h1 class="logo"><a href="/" class="accent-bg-img">Momentum Dash</a><img src="/img/logo-white.png"></h1>
+
+			<nav class="main-nav">
+				<a href="/plus">Plus</a>
+				<a href="/about">About</a>
+				<a href="/blog">Blog</a>
+			</nav>
+
+			<nav class="top-right chrome-store">
+				<span>Have a gift code? </span><a href="/redeem">Redeem</a>
+			</nav>
+		</div>
+	</header>
+
+	 <section class="hero gift-hero">
+		<div class="hero-bg" style="background-image: url('/img/gift/hero.jpg')"></div>
+		<div class="hero-wrapper">
+			<div class="gift-hero-headline">
+				<h2>Give the gift of Momentum Plus</h2>
+								<p class="subheading hero-subheading">For a focused and inspired 2020.</p>
+
+							</div>
+			<img class="gift-hero-img" src="/img/gift/laptop3.png">
+		</div>
+
+		<div class="gift-benefits-overlay">
+			<div class="gift-benefits-wrapper">
+				<h3>Benefits of Plus</h3>
+				<ul class="gift-benefits">
+					<li>
+						<h4>Personalize</h4>
+						<p>Create your own dashboard with custom backgrounds, quotes, and themes.</p>
+					</li><!--
+					--><li>
+					<h4>Connect</h4>
+					<p>See your third party tasks and automatically set the top one to your focus.</p>
+				</li><!--
+					--><li>
+					<h4>Stay on task</h4>
+					<p>Better manage your tasks and goals with extra todo folders and autofocus mode.</p>
+				</li><!--
+					--><li>
+					<h4>Unlock more widgets</h4>
+					<p>Jot down important notes, see upcoming events, and track important metrics.</p>
+				</li>
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<a name="buy"></a>
+	<div id="app"></div>
+
+	<section class="gift-faq">
+		<ul class="questions">
+			<li>
+				<p class="question">How secure is my payment?</p>
+				<p class="answer">We use Stripe for payment processing. Stripe exceeds the most stringent industry standards for security. To learn more about the technical details of Stripe's secure infrastructure, view their <a href="https://stripe.com/docs/security/stripe" target="new">security documentation</a>. We do not have access to or store any credit card information.</p>
+			</li><li>
+				<p class="question">How do I find out more about Momentum Plus?</p>
+				<p class="answer">Momentum Plus features customization, more widgets, personalization, and gives early access to new features. Your subscription also helps support Momentum! <a href="/plus">See our Plus page</a> to learn more about Momentum Plus.</p>
+			</li>
+		</ul>
+	</section>
+
+
+	<script type="text/javascript" src="https://js.stripe.com/v3/"></script>
+	<script type="text/javascript">
+				window.m = window.m || {}
+		window.m.stripePublishableKey = 'pk_live_4dqn1g4XxqTrGpKpblLi101S';
+		window.m.urlRoot = 'https://api.momentumdash.com';
+		window.m.saleInfo = {
+
+			live: Boolean(),
+			title: 'Cyber Week Sale',
+			description: 'Upgrade to Momentum Plus for 25% off!',
+			giftTypeUuid: '45FBDE7D-FE64-4974-8141-A19FA0DFFF5C',
+
+			regularMonth: 3.33,
+			regularYear: 39.95,
+
+			priceMonth: 2.50,
+			priceYear: 29.95,
+			baseDiscountPercent: 25,
+
+			quantityDiscountPercent: 20,
+			discountThreshold: 2
+		}
+		window.m.urlAccount = 'https://account.momentumdash.com';
+	</script>
+	<script src="/dist/js/chunk-vendors.80770947.js"></script>	<script src="/dist/js/gift.338c1adb.js"></script>
+
+
+	<footer class="footer footer-gift">
+		<nav class="nav footer-nav">
+			<a href="/plus" class="">Plus</a><!--
+			--><a href="/about" class="">About</a><!--
+			--><a href="/blog" class="">Blog</a><!--
+			--><a href="https://momentumdash.help">Help</a><!--
+			--><a href="/gift" class="active">Gift</a><!--
+			--><a href="/contact" class="">Contact</a><!--
+			--><a href="/careers" class="accent-fg ">We’re Hiring!</a>
+		</nav>
+		<nav class="footer-secondary">
+			<span class="item">&copy; 2020 Momentum Dashboard Corp.</span><!--
+			--><span class="u--mobile-br"></span><!--
+			--><a href="/legal" class="item">Terms</a><!--
+			--><a href="/privacy" class="item">Privacy</a><!--
+			--><!--<a href="/advertise" class="item">Advertise</a>--><!--
+			--><a href="https://facebook.com/momentumdash" onclick="ga('send', 'event', 'Social Click', 'Facebook', 'Footer')" target="_blank" class="social item"><i class="fa fa-facebook"></i></a><!--
+			--><a href="https://twitter.com/momentumdash" onclick="ga('send', 'event', 'Social Click', 'Twitter', 'Footer')" target="_blank" class="social item"><i class="fa fa-twitter"></i></a><!--
+			--><a href="https://instagram.com/momentumdash" onclick="ga('send', 'event', 'Social Click', 'Instagram', 'Footer')" target="_blank" class="social item"><i class="fa fa-instagram"></i></a>
+		</nav>
+	</footer>
+
+	
+	<script>
+		if (window.jQuery) {
+			$(function () {
+				$(window).on('scroll', function (e) {
+					if ($(this).scrollTop() > 40) {
+						$('header').addClass('scrolled')
+					} else if ($(this).scrollTop() === 0) {
+						$('header').removeClass('scrolled')
+					}
+				})
+			})
+		}
+	</script>
+
+	<script src='/app/analytics.js'></script>
+
+	</body>
+</html>

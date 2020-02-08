@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Terms of Use・Momentum</title>
+		<meta name="description" content="Eliminate distractions and find your focus. Daily inspiration and tools to help you track your progress and reach your goals. Get Momentum on your Chrome or Firefox New Tab today!">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Favicons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144x144.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/apple-touch-icon-152x152.png" />
+		<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+		<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+		<meta name="application-name" content="Momentum Dash"/>
+		<meta name="msapplication-TileColor" content="#ffffff" />
+		<meta name="msapplication-TileImage" content="/mstile-144x144.png" />
+
+					<!-- Facebook sharing -->
+			<meta property="og:title" content="Momentum Dashboard" />
+			<meta property="og:description" content="Replace new tab page with a personal dashboard featuring todo, weather, and inspiration." />
+			<meta property="og:image" content="https://momentumdash.com/img/facebook-preview.jpeg" />
+			<meta property="og:type" content="website" />
+			
+		<link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/laookkfknpbbblfpciffpaejjkokdgca">
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="/css/normalize.css">
+		<link rel="stylesheet" href="/css/header.css?v=20191126">
+		<link rel="stylesheet" href="/css/inside.css?v=20190904">
+		<script src="/js/jquery.min.js"></script>
+		<script>
+			$(function() {
+				$.getJSON('/app/backgrounds.json', function(data) {
+					 if(typeof localStorage.background === 'undefined') {
+						localStorage.background = Math.floor(Math.random()*data.backgrounds.length)
+					 }
+
+					 var accent = data.backgrounds[localStorage.background].accent
+					 $('.accent-fg, .legal a').css('color', accent)
+					 $('.accent-bg').css('background-color', accent)
+					 if (!$('.header').hasClass('has-background')) {
+						$('.logo img').css('background-image', 'url("/backgrounds/' + data.backgrounds[localStorage.background].filename + '")')
+					 }
+				})
+			})
+		</script>
+	</head>
+    <body class=" ">
+        
+        <header class="header ">
+            <div class="wrapper header-wrapper">
+                <h1 class="logo"><a href="/" class="accent-bg-img">Momentum</a><img src="/img/logo-inverted.png"></h1>
+
+                <nav class="main-nav">
+                    <a href="/plus" class="plus">Plus</a>
+                    <a href="/about" class="">About</a>
+                    <a href="/blog" class="">Blog</a>
+                </nav>
+
+                <section class="top-right">
+                    <span class="available-on">Available on</span>
+                    <nav class="available-links">
+                        <a href="https://chrome.google.com/webstore/detail/momentum/laookkfknpbbblfpciffpaejjkokdgca" onclick="ga('send', 'event', 'Social Click', 'Chrome Store')" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 305 305" class="icon-browser icon-chrome"><path d="M95.506 152.511c0 31.426 25.567 56.991 56.994 56.991 31.425 0 56.99-25.566 56.99-56.991 0-31.426-25.565-56.993-56.99-56.993-31.427 0-56.994 25.567-56.994 56.993z"/><path d="M283.733 77.281a2.5 2.5 0 0 0-.023-2.513c-13.275-22.358-32.167-41.086-54.633-54.159C205.922 7.134 179.441.012 152.5.012c-46.625 0-90.077 20.924-119.215 57.407a2.497 2.497 0 0 0-.212 2.81l42.93 74.355a2.5 2.5 0 0 0 4.586-.625c8.465-32.799 38.036-55.706 71.911-55.706 2.102 0 4.273.096 6.455.282.071.007.143.01.214.01H281.56c.899 0 1.729-.482 2.173-1.264z"/><path d="M175.035 224.936a2.496 2.496 0 0 0-2.646-.876 74.14 74.14 0 0 1-19.889 2.709c-28.641 0-55.038-16.798-67.251-42.794a2.797 2.797 0 0 0-.098-.188L23.911 77.719a2.496 2.496 0 0 0-2.165-1.25h-.013a2.5 2.5 0 0 0-2.165 1.272C6.767 100.456 0 126.311 0 152.511c0 36.755 13.26 72.258 37.337 99.969 23.838 27.435 56.656 45.49 92.411 50.84a2.502 2.502 0 0 0 2.535-1.223l42.941-74.378c.508-.88.433-1.98-.189-2.783z"/><path d="M292.175 95.226h-85.974a2.499 2.499 0 0 0-1.75 4.285c14.385 14.102 22.307 32.924 22.307 53 0 15.198-4.586 29.824-13.263 42.298a2.53 2.53 0 0 0-.112.178l-61.346 106.252a2.5 2.5 0 1 0 2.165 3.75h.028c40.37-.45 78.253-16.511 106.669-45.222C289.338 231.032 305 192.941 305 152.511c0-19.217-3.532-37.956-10.498-55.698a2.5 2.5 0 0 0-2.327-1.587z"/></svg>Chrome</a><!--
+                    --><a href="https://addons.mozilla.org/en-US/firefox/addon/momentumdash/" onclick="ga('send', 'event', 'Social Click', 'Firefox Store')" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 305.015 305.015" class="icon-browser icon-firefox"><path d="M301.98 103.88a2.501 2.501 0 0 0-2.656 1.442l-3.413 7.555c-1.296-9.931-3.7-25.915-6.875-36.396-4.839-16.138-15.087-26.571-15.521-27.008a2.5 2.5 0 0 0-4.213 2.305l2.652 11.949c-6.381-6.666-16.632-16.234-26.776-20.898-2.439-1.189-4.918-2.279-7.089-3.219-22.038-19.576-50.3-30.352-79.627-30.352-41.3 0-78.94 20.689-101.226 55.487-2.097-1.694-5.037-4.657-6.722-8.928-3.064-7.512-4.616-15.951-4.632-16.035a2.5 2.5 0 0 0-4.19-1.359C23.326 56.034 25.149 83.49 25.834 89.713c-2.276 2.431-8.709 9.639-15.208 20.038C2.556 122.672.113 145.26.014 146.215a2.497 2.497 0 1 0 4.301 1.979l5.375-5.678a109.885 109.885 0 0 0-1.721 7.424c-2.421 11.975-1.713 30.55-1.682 31.335a2.5 2.5 0 0 0 4.759.968l3.163-6.697c2.332 16.302 11.285 50.988 45.614 82.941 25.426 23.684 60.79 37.269 97.025 37.271h.009c35.168 0 68.374-12.578 96.022-36.372 32.692-28.164 44.871-68.384 49.33-97.166 4.814-31.073 1.996-55.158 1.873-56.168a2.496 2.496 0 0 0-2.102-2.172zm-55.82.905c.034.044 3.426 4.486 4.166 15.868.51 8.518-1.238 22.14-2.341 29.593l-6.661-7.729a2.5 2.5 0 1 0-4.375 1.933c.023.192 2.293 19.437-1.526 36.165-1.808 7.861-4.637 13.512-7.064 17.241l.931-12.6a2.499 2.499 0 0 0-1.876-2.606 2.496 2.496 0 0 0-2.895 1.391c-.112.249-11.658 25.037-43.279 34.852-4.416 1.36-9.067 2.05-13.825 2.05-16.854.001-32.168-8.598-40.849-14.64.747.038 1.49.057 2.229.057 12.435 0 21.998-5.357 29.684-9.662 2.019-1.131 3.926-2.199 5.761-3.106 11.045-5.554 16.18-6.02 20.125-6.02 2.084 0 3.691-1.217 4.195-3.175 1.235-4.806-4.543-13.372-11.678-17.3-3.539-1.924-7.323-2.82-11.906-2.82-7.292 0-16.333 2.3-29.284 5.806-2.377.634-4.724.956-6.976.956-7.936.001-13.184-3.838-16.189-7.059-4.044-4.334-6.347-10.061-6.008-14.945.154-2.227 1.026-4.504 6.325-4.504 4.701 0 9.926 1.938 9.977 1.956.285.108.584.161.881.161h.019a2.5 2.5 0 0 0 2.469-2.897l-.699-21.899c2.525-1.61 8.567-5.527 14.375-9.749 14.051-10.214 15.933-14.12 14.429-17.087-1.992-4.04-7.235-4.696-13.306-5.456-3.474-.435-7.411-.928-10.967-2.105-7.408-2.462-12.289-8.858-13.4-10.43-.23-1.316-.78-5.75 1.395-9.535 2.354-4.137 10.495-10.542 13.434-12.662a2.499 2.499 0 0 0-1.193-4.513c-.252-.028-7.721-.774-19.922 3.266-9.934 3.328-17.639 8.722-20.294 10.723-1.142-.224-3.097-.533-6.336-.867 19.025-21.484 46.01-33.714 74.76-33.714 21.101 0 41.038 6.417 58.012 18.618l-16.808 2.811a2.5 2.5 0 0 0-.332 4.853c.224.07 22.608 7.146 39.31 20.021 3.717 2.909 7.115 6.676 10.104 11.199a100.586 100.586 0 0 1 6.513 18.387l-5.62-4.367a2.488 2.488 0 0 0-3.296.223 2.507 2.507 0 0 0-.189 3.317z"/></svg> Firefox</a>
+                    </nav>
+                </section>
+            </div>
+        </header>
+
+<nav class="legal-nav">
+	<!-- <a href="/legal">Summary</a> -->
+	<a href="/terms" class="active"><span class="highlight accent-bg"></span>Terms of Use</a>
+	<a href="/privacy">Privacy Policy</a>
+	<a href="/cookies">Cookie Policy</a>
+</nav>
+
+
+<section class="content legal legal-terms">
+
+	<h2>Terms of Use</h2>
+
+
+
+<p class="small"><strong>Important:</strong> Before using this software (Momentum), please carefully read this agreement which contains the terms and conditions under which you are acquiring a license to use Momentum. If you do not accept the terms and conditions of this agreement please do not use Momentum. If you access or use Momentum, you will be accepting the terms and conditions of this agreement and Momentum’s <a href="/privacy">Privacy Policy</a> and <a href="/cookies">Cookies Policy</a>. Momentum is protected by copyright laws and international copyright treaties, as well as other intellectual property laws.</p>
+
+<p class="small">If you are an agent or employee of another entity you represent and warrant that (i) the individual accepting this agreement is duly authorized to accept this agreement on such entity’s behalf and to bind such entity, and (ii) such entity has full power, corporate or otherwise, to enter into this agreement and perform its obligations hereunder.</p>
+
+
+<h4 id="1-definitions">1. Definitions</h4>
+
+<p>(i) &quot;User&quot; or &quot;You&quot; means the individual or the business entity to which a license is granted by Momentum for the use of the Software;</p>
+
+<p>(ii) &quot;Effective Date&quot; means the date on which a User first installs the Licensed Software through Momentum’s website or through a third-party application, extension, or add-on store such as the Chrome Web Store or Firefox Add-ons website;</p>
+
+<p>(iii) “Licensed Software” means the web-based software extension called Momentum, which is proprietary to Momentum;</p>
+
+<p>(iv) “Licensee Data” means all electronic data or information submitted by User to the Service;</p>
+
+<p>(v) “Service” means the provision of access to the Licensed Software for the purpose of transmitting Licensee Data;</p>
+
+<p>(vi) “Usage Data” means data collected about the User’s use of the Service. For example, how often the User accesses a to do list, or what photo(s) they favorite.</p>
+
+
+<h4 id="2-licenses-and-data">2. Licenses and Data</h2>
+
+<p>
+	<strong>2.1 Software License Grant</strong><br>
+	Subject to all of the terms and conditions of this Agreement and payment of any applicable fees, Momentum grants to the User a royalty-free, non-exclusive, non-transferable license to download, install and use the Licensed Software as part of the Service.
+</p>
+
+<p>
+	<strong>2.2 License to Licensee Data</strong><br>
+	User grants to Momentum a non-exclusive license to access and modify Licensee Data as required in order to provide the Service.
+</p>
+
+<p>
+	<strong>2.3 Usage Data</strong><br>
+	User agrees that Momentum will have the right to collect Usage Data and to create statistics and analytics therefrom (“Derived Data”) as per the <a href="/privacy">Privacy Policy</a> currently in effect.
+</p>
+
+<p>
+	<strong>2.4 Consent for Children Under 16</strong><br>
+	By using our service, you represent and warrant that you are at least 16 years of age. No one under the age of 16 may use the Service, except as set forth as follows.
+</p>
+
+<p>Momentum is not directed to children, and we expect that any use by children will only be done with the guidance, supervision and consent of their parents, guardians and/or authorized school officials. If you are under the age of 16 you must receive consent from a parent, guardian and/or an authorized school official to use the Service. Momentum relies on parents and guardians to ensure that minors only use Momentum if they can understand their rights and responsibilities as laid out in these Terms of Service and in our <a href="/privacy">Privacy Policy</a>.</p>
+
+<p>If you are an authorized school official in the United States or in the EU and want your students, who are under the age of 16, to create Momentum accounts, you are responsible for complying with the U.S. Children&#39;s Online Privacy Protection Act (&quot;COPPA&quot;) and, to the extent applicable, the Family Educational Rights and Privacy Act (&quot;FERPA&quot;), or the GDPR policy, respectively. This means that you must notify the students&#39; parents/guardians of the personally identifiable information that Momentum will collect, and that you will obtain parental/guardian consent before your students establish accounts or use Momentum. When obtaining such consent, you must provide their parents or guardians with a copy of our <a href="/privacy">Privacy Policy</a> and keep all consents on file and provide them to us upon request.</p>
+
+<p>For more information on complying with COPPA, see <a href="https://www.ftc.gov/privacy/coppafaqs.shtm">the Federal Trade Commission&#39;s website</a>. If you are located outside of the United States, we will rely on you to obtain any required consent or approval from the parent or guardian of any student covered by similar laws, and, as a condition to your and your students&#39; use of Momentum, you agree that you will be responsible for complying with such laws.</p>
+
+<p>If we become aware that a child under the age of 16 has provided us with personal information, without the consent of a parent, guardian and/or an authorized school official, we will delete the child’s account and information. If you are aware that a child under the age of 16 has provided Momentum with personal information without the consent of a parent, guardian and/or an authorized school official, please contact Momentum support.</p>
+
+
+<h4 id="3-technical-support">3. Technical Support</h2>
+
+<p><strong>3.1</strong> Momentum makes commercially reasonable efforts to provide support for the Service through the online Help Center located at <a href="https://get.momentumdash.help"></a><a href="https://momentumdash.help">https://momentumdash.help</a><a href="https://get.momentumdash.help">.</a> You may also <a href="mailto:help@momentumdash.com">contact us directly</a>.</p>
+
+
+<h4 id="4-disclaimer-of-warranties">4. Disclaimer of Warranties</h2>
+
+<p><strong>4.1</strong> To the greatest extent permitted by law, the licensed software and technical support provided by Momentum hereunder are provided on an &quot;as is&quot; basis. There are no warranties, representations or conditions, express or implied, written or oral, arising by statute, operation of law, course of dealing, usage of trade or otherwise, regarding them or any other product or service provided under this agreement or in connection with this agreement by Momentum. Momentum disclaims any implied warranties or conditions of quality, merchantability, merchantable quality, durability, fitness for a particular purpose and non-infringement. Momentum does not represent or warrant that the software shall meet any or all of User’s particular requirements, that the software will operate error-free or uninterrupted or that all errors or defects in the software can be found or corrected.</p>
+<p><strong>4.2</strong> In certain jurisdictions some or all of the provisions in this Section may not be effective, or the applicable law may mandate a more extensive warranty, in which case the applicable law will prevail over this Agreement.</p>
+
+
+<h4 id="5-limitation-of-liability">5. Limitation of Liability</h2>
+
+<p><strong>5.1</strong> To the greatest extent permitted by applicable law, in no event shall Momentum be liable to the User or any other person for any direct, indirect, incidental, special, punitive, exemplary or consequential damages whatsoever, including without limitation, legal expenses, loss of business, loss of profits, loss of revenue, lost or damaged data, loss of computer time, cost of substitute goods or services, or failure to realize expected savings or any other commercial or economic losses arising out of or in connection with this agreement, even if Momentum has been advised of the possibility of such loss or damages, or such losses or damages are foreseeable.</p>
+
+<p><strong>5.2</strong> The entire liability of Momentum and the User’s exclusive remedy with respect to the software and technical support. Any other products or services supplied by Momentum in connection with this agreement for damages for any cause and regardless of the cause of action, whether in contract or in tort, including fundamental breach or negligence, will be limited in the aggregate to the amounts paid by User to Momentum under this agreement for the software, technical support or services giving rise to the claim.</p>
+
+<p><strong>5.3</strong> The disclaimer of representations, warranties and conditions and limitation of liability constitute an essential part of this agreement. You acknowledge that for the disclaimer of representations, warranties and conditions and limitation of liability, neither Momentum nor any of its licensors or suppliers would grant the rights granted in this agreement.</p>
+
+
+<h4 id="6-proprietary-rights">6. Proprietary Rights</h2>
+
+<p><strong>6.1</strong> The User acknowledges and agrees that the Licensed Software contains confidential and proprietary information and trade secrets belonging to Momentum and its licensors. The User acknowledges and agrees that title in and rights to the Software remains exclusively with Momentum and its licensors. The User’s rights to the Software are strictly limited to those granted in this Agreement. User shall not decompile, disassemble or otherwise reverse engineer the Software. If the foregoing provision is prohibited by applicable law, the User will provide Momentum with advance written notification of (a) its intention to decompile, disassemble or otherwise reverse engineer the Software, and (b) the nature of the work involved. Momentum will be given the right of first refusal to perform such work at its prevailing rates and prices.</p>
+
+<h4 id="7-uninstalling-the-software">7. Uninstalling the Software</h2>
+
+<p><strong>7.1</strong> Users can uninstall the Licensed Software at any time by following the process outlined in your browser’s help documentation. You may also find instructions in Momentum’s <a href="https://get.momentumdash.help/hc/en-us/articles/115007631367-How-to-uninstall-remove-Momentum">How to uninstall/remove Momentum</a> help article. </p>
+
+
+<h4 id="8-term-and-termination">8. Term and Termination</h2>
+
+<p><strong>8.1</strong> The term of this Agreement will begin upon the Effective Date and shall continue for as long as User uses the Service under subscription and pays all applicable fees, unless earlier terminated under this section 8.</p>
+
+<p><strong>8.2</strong> Momentum may terminate this Agreement in the event of any breach by the User if such breach has not been cured within thirty (30) days of notice to User. No termination of this Agreement will entitle the User to a refund of any amounts paid by User to Momentum or affect any obligations User may have to pay any outstanding amounts owing to Momentum.</p>
+
+<p><strong>8.3</strong> The User’s rights to use and access the Service will immediately terminate upon termination or expiration of this Agreement. Sections 1, 4, 5, 6, 7, 8.3, 9 and 10 of this Agreement shall survive the expiration or termination of this Agreement.</p>
+
+
+<h4 id="9-general-provisions">9. General Provisions</h2>
+
+<p><strong>9.1 No Waiver</strong><br>
+No delay or failure in exercising any right under this Agreement, or any partial or single exercise of any right, will constitute a waiver of that right or any other rights under this Agreement. No consent to a breach of any express or implied term set out in this Agreement constitutes consent to any subsequent breach, whether of the same or any other provision.
+
+<p><strong>9.2 Severability</strong><br>
+If any provision of this Agreement is, or becomes, unenforceable, it will be severed from this Agreement and the remainder of this Agreement will remain in full force and effect.</p>
+
+<p><strong>9.3 Assignment</strong><br>
+The User may not transfer or assign this Agreement (whether voluntarily, by operation of law, or otherwise) without Momentum’s prior written consent. Momentum may assign this Agreement at any time without notice. This Agreement is binding upon and will inure to the benefit of both parties, and their respective successors and permitted assigns.</p>
+
+<p><strong>9.4 Governing Law and Venue</strong><br>
+This Agreement shall be governed by the laws of the Province of British Columbia. No choice of laws rules of any jurisdiction shall apply to this Agreement. The User consents and agrees that the courts of the Province of British Columbia shall have jurisdiction over any legal action or proceeding brought by the User arising out of or relating to this Agreement, and the User consents to the jurisdiction of such courts for any such action or proceeding.</p>
+
+<p><strong>9.5 Entire Agreement</strong><br>
+This Agreement is the entire understanding and agreement between the User and Momentum with respect to the subject matter hereof, and it supersedes all prior negotiations, commitments and understandings, verbal or written, any purchase order issued by User.</p>
+
+<p>If you have any questions about this agreement, please <a href="mailto:help@momentumdash.com">contact us</a>.</p>
+
+<p class="last-updated">Last updated May 24, 2018.</p>
+
+
+
+</section>
+
+	<footer class="footer footer-terms-of-use">
+		<nav class="nav footer-nav">
+			<a href="/plus" class="">Plus</a><!--
+			--><a href="/about" class="">About</a><!--
+			--><a href="/blog" class="">Blog</a><!--
+			--><a href="https://momentumdash.help">Help</a><!--
+			--><a href="/gift" class="">Gift</a><!--
+			--><a href="/contact" class="">Contact</a><!--
+			--><a href="/careers" class="accent-fg ">We’re Hiring!</a>
+		</nav>
+		<nav class="footer-secondary">
+			<span class="item">&copy; 2020 Momentum Dashboard Corp.</span><!--
+			--><span class="u--mobile-br"></span><!--
+			--><a href="/legal" class="item">Terms</a><!--
+			--><a href="/privacy" class="item">Privacy</a><!--
+			--><!--<a href="/advertise" class="item">Advertise</a>--><!--
+			--><a href="https://facebook.com/momentumdash" onclick="ga('send', 'event', 'Social Click', 'Facebook', 'Footer')" target="_blank" class="social item"><i class="fa fa-facebook"></i></a><!--
+			--><a href="https://twitter.com/momentumdash" onclick="ga('send', 'event', 'Social Click', 'Twitter', 'Footer')" target="_blank" class="social item"><i class="fa fa-twitter"></i></a><!--
+			--><a href="https://instagram.com/momentumdash" onclick="ga('send', 'event', 'Social Click', 'Instagram', 'Footer')" target="_blank" class="social item"><i class="fa fa-instagram"></i></a>
+		</nav>
+	</footer>
+
+	
+	<script>
+		if (window.jQuery) {
+			$(function () {
+				$(window).on('scroll', function (e) {
+					if ($(this).scrollTop() > 40) {
+						$('header').addClass('scrolled')
+					} else if ($(this).scrollTop() === 0) {
+						$('header').removeClass('scrolled')
+					}
+				})
+			})
+		}
+	</script>
+
+	<script src='/app/analytics.js'></script>
+
+	</body>
+</html>

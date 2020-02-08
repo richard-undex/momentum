@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>Blog・Momentum</title>
+		<meta name="description" content="Eliminate distractions and find your focus. Daily inspiration and tools to help you track your progress and reach your goals. Get Momentum on your Chrome or Firefox New Tab today!">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<!-- Favicons -->
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144x144.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/apple-touch-icon-152x152.png" />
+		<link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32" />
+		<link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16" />
+		<meta name="application-name" content="Momentum Dash"/>
+		<meta name="msapplication-TileColor" content="#ffffff" />
+		<meta name="msapplication-TileImage" content="/mstile-144x144.png" />
+
+					<!-- Facebook sharing -->
+			<meta property="og:title" content="Todo integration touch-ups" />
+			<meta property="og:image" content="https://momentumdash.com/blog/images/todo-integration-touch-ups.jpg" />
+			<meta property="og:type" content="article" />
+			
+		<link rel="chrome-webstore-item" href="https://chrome.google.com/webstore/detail/laookkfknpbbblfpciffpaejjkokdgca">
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="/css/normalize.css">
+		<link rel="stylesheet" href="/css/header.css?v=20191126">
+		<link rel="stylesheet" href="/css/inside.css?v=20190904">
+		<script src="/js/jquery.min.js"></script>
+		<script>
+			$(function() {
+				$.getJSON('/app/backgrounds.json', function(data) {
+					 if(typeof localStorage.background === 'undefined') {
+						localStorage.background = Math.floor(Math.random()*data.backgrounds.length)
+					 }
+
+					 var accent = data.backgrounds[localStorage.background].accent
+					 $('.accent-fg, .legal a').css('color', accent)
+					 $('.accent-bg').css('background-color', accent)
+					 if (!$('.header').hasClass('has-background')) {
+						$('.logo img').css('background-image', 'url("/backgrounds/' + data.backgrounds[localStorage.background].filename + '")')
+					 }
+				})
+			})
+		</script>
+	</head>
+    <body class=" ">
+        
+        <header class="header ">
+            <div class="wrapper header-wrapper">
+                <h1 class="logo"><a href="/" class="accent-bg-img">Momentum</a><img src="/img/logo-inverted.png"></h1>
+
+                <nav class="main-nav">
+                    <a href="/plus" class="plus">Plus</a>
+                    <a href="/about" class="">About</a>
+                    <a href="/blog" class="active">Blog</a>
+                </nav>
+
+                <section class="top-right">
+                    <span class="available-on">Available on</span>
+                    <nav class="available-links">
+                        <a href="https://chrome.google.com/webstore/detail/momentum/laookkfknpbbblfpciffpaejjkokdgca" onclick="ga('send', 'event', 'Social Click', 'Chrome Store')" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 305 305" class="icon-browser icon-chrome"><path d="M95.506 152.511c0 31.426 25.567 56.991 56.994 56.991 31.425 0 56.99-25.566 56.99-56.991 0-31.426-25.565-56.993-56.99-56.993-31.427 0-56.994 25.567-56.994 56.993z"/><path d="M283.733 77.281a2.5 2.5 0 0 0-.023-2.513c-13.275-22.358-32.167-41.086-54.633-54.159C205.922 7.134 179.441.012 152.5.012c-46.625 0-90.077 20.924-119.215 57.407a2.497 2.497 0 0 0-.212 2.81l42.93 74.355a2.5 2.5 0 0 0 4.586-.625c8.465-32.799 38.036-55.706 71.911-55.706 2.102 0 4.273.096 6.455.282.071.007.143.01.214.01H281.56c.899 0 1.729-.482 2.173-1.264z"/><path d="M175.035 224.936a2.496 2.496 0 0 0-2.646-.876 74.14 74.14 0 0 1-19.889 2.709c-28.641 0-55.038-16.798-67.251-42.794a2.797 2.797 0 0 0-.098-.188L23.911 77.719a2.496 2.496 0 0 0-2.165-1.25h-.013a2.5 2.5 0 0 0-2.165 1.272C6.767 100.456 0 126.311 0 152.511c0 36.755 13.26 72.258 37.337 99.969 23.838 27.435 56.656 45.49 92.411 50.84a2.502 2.502 0 0 0 2.535-1.223l42.941-74.378c.508-.88.433-1.98-.189-2.783z"/><path d="M292.175 95.226h-85.974a2.499 2.499 0 0 0-1.75 4.285c14.385 14.102 22.307 32.924 22.307 53 0 15.198-4.586 29.824-13.263 42.298a2.53 2.53 0 0 0-.112.178l-61.346 106.252a2.5 2.5 0 1 0 2.165 3.75h.028c40.37-.45 78.253-16.511 106.669-45.222C289.338 231.032 305 192.941 305 152.511c0-19.217-3.532-37.956-10.498-55.698a2.5 2.5 0 0 0-2.327-1.587z"/></svg>Chrome</a><!--
+                    --><a href="https://addons.mozilla.org/en-US/firefox/addon/momentumdash/" onclick="ga('send', 'event', 'Social Click', 'Firefox Store')" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 305.015 305.015" class="icon-browser icon-firefox"><path d="M301.98 103.88a2.501 2.501 0 0 0-2.656 1.442l-3.413 7.555c-1.296-9.931-3.7-25.915-6.875-36.396-4.839-16.138-15.087-26.571-15.521-27.008a2.5 2.5 0 0 0-4.213 2.305l2.652 11.949c-6.381-6.666-16.632-16.234-26.776-20.898-2.439-1.189-4.918-2.279-7.089-3.219-22.038-19.576-50.3-30.352-79.627-30.352-41.3 0-78.94 20.689-101.226 55.487-2.097-1.694-5.037-4.657-6.722-8.928-3.064-7.512-4.616-15.951-4.632-16.035a2.5 2.5 0 0 0-4.19-1.359C23.326 56.034 25.149 83.49 25.834 89.713c-2.276 2.431-8.709 9.639-15.208 20.038C2.556 122.672.113 145.26.014 146.215a2.497 2.497 0 1 0 4.301 1.979l5.375-5.678a109.885 109.885 0 0 0-1.721 7.424c-2.421 11.975-1.713 30.55-1.682 31.335a2.5 2.5 0 0 0 4.759.968l3.163-6.697c2.332 16.302 11.285 50.988 45.614 82.941 25.426 23.684 60.79 37.269 97.025 37.271h.009c35.168 0 68.374-12.578 96.022-36.372 32.692-28.164 44.871-68.384 49.33-97.166 4.814-31.073 1.996-55.158 1.873-56.168a2.496 2.496 0 0 0-2.102-2.172zm-55.82.905c.034.044 3.426 4.486 4.166 15.868.51 8.518-1.238 22.14-2.341 29.593l-6.661-7.729a2.5 2.5 0 1 0-4.375 1.933c.023.192 2.293 19.437-1.526 36.165-1.808 7.861-4.637 13.512-7.064 17.241l.931-12.6a2.499 2.499 0 0 0-1.876-2.606 2.496 2.496 0 0 0-2.895 1.391c-.112.249-11.658 25.037-43.279 34.852-4.416 1.36-9.067 2.05-13.825 2.05-16.854.001-32.168-8.598-40.849-14.64.747.038 1.49.057 2.229.057 12.435 0 21.998-5.357 29.684-9.662 2.019-1.131 3.926-2.199 5.761-3.106 11.045-5.554 16.18-6.02 20.125-6.02 2.084 0 3.691-1.217 4.195-3.175 1.235-4.806-4.543-13.372-11.678-17.3-3.539-1.924-7.323-2.82-11.906-2.82-7.292 0-16.333 2.3-29.284 5.806-2.377.634-4.724.956-6.976.956-7.936.001-13.184-3.838-16.189-7.059-4.044-4.334-6.347-10.061-6.008-14.945.154-2.227 1.026-4.504 6.325-4.504 4.701 0 9.926 1.938 9.977 1.956.285.108.584.161.881.161h.019a2.5 2.5 0 0 0 2.469-2.897l-.699-21.899c2.525-1.61 8.567-5.527 14.375-9.749 14.051-10.214 15.933-14.12 14.429-17.087-1.992-4.04-7.235-4.696-13.306-5.456-3.474-.435-7.411-.928-10.967-2.105-7.408-2.462-12.289-8.858-13.4-10.43-.23-1.316-.78-5.75 1.395-9.535 2.354-4.137 10.495-10.542 13.434-12.662a2.499 2.499 0 0 0-1.193-4.513c-.252-.028-7.721-.774-19.922 3.266-9.934 3.328-17.639 8.722-20.294 10.723-1.142-.224-3.097-.533-6.336-.867 19.025-21.484 46.01-33.714 74.76-33.714 21.101 0 41.038 6.417 58.012 18.618l-16.808 2.811a2.5 2.5 0 0 0-.332 4.853c.224.07 22.608 7.146 39.31 20.021 3.717 2.909 7.115 6.676 10.104 11.199a100.586 100.586 0 0 1 6.513 18.387l-5.62-4.367a2.488 2.488 0 0 0-3.296.223 2.507 2.507 0 0 0-.189 3.317z"/></svg> Firefox</a>
+                    </nav>
+                </section>
+            </div>
+        </header>
+
+
+
+<section class="content blog blog-article">
+
+	<style type="text/css">
+		.blog-article a, .blog-article h2, .blog-article h3, .blog-article h4, .blog-article h5, .blog-article h6 { color: #636c2a; }
+		.blog-article .button, .video:hover .play-button { background-color: #636c2a; }
+	</style>
+
+
+	<!--<a href="/blog" class="back"><i class="fa fa-chevron-left"></i> Blog</a>-->
+
+	<p class="blog-hero"><img src="/blog/images/todo-integration-touch-ups.jpg"></p>
+
+	<h2><a href="/blog/todo-integration-touch-ups" class="permalink"
+			  >Todo integration touch-ups</a></h2>
+
+	<div class="blog-subheading">A couple mini-updates and a teaser of what’s to come.</div>
+
+	<div class="blog-article-body">
+		<p>We’ve got a big integration announcement coming up and it starts with “A” and ends with “sana.” In the meantime, we wanted to let you know about a couple of mini-improvements we’ve made to the existing Todo integrations.</p>
+
+
+<h3>A tiny timesaver</h3>
+
+<p>Save time jumping between Momentum and your favorite 3rd-party services with this new shortcut. You can now jump directly from your Momentum Todo list to Trello, Wunderlist, Todoist, and/or Google Task websites in one of two ways.</p>
+
+<ul>
+	<li>Click the <strong>integration icon</strong> in the top left of the Todo header to view that project or list on its website.</li>
+	<img src="/blog/images/todo-integration-touch-ups-2.gif">
+	<li>To see a specific task on the website, click the ••• to the right of the todo and select “<strong>View in [website]</strong>” from the dropdown.</li>
+	<img src="/blog/images/todo-integration-touch-ups-3.gif">
+</ul>
+
+<p>It’s now much easier to hop into a board or task from Momentum and make additional edits.</p>
+
+
+<h3>A personal touch</h3>
+
+<p>We’ve added a new icon to your Momentum <strong>Trello Todo</strong> lists that lets you quickly switch between seeing all tasks and those only assigned to you. Select the group icon on the top right of your Momentum Todo header to toggle between seeing all tasks and seeing only the tasks assigned to you.</p>
+
+<img src="/blog/images/todo-integration-touch-ups-4.gif">
+
+<p>This setting is currently part of the <strong>Trello</strong> integration but will be making its way to our other integrations soon.</p>
+
+
+<h3>A few Todo shortcuts</h3>
+
+<ul>
+	<li><span class="hotkey">T</span> - Open Todo</li>
+	<li>Hover cursor + <span class="hotkey">Spacebar</span> - Move a todo from any list to Today</li>
+	<li><span class="hotkey">←</span> or <span class="hotkey">→</span> - Quickly move between Todo lists within a single source</li>
+	<li>Hold <span class="hotkey">Shift</span> + <span class="hotkey">←</span> or <span class="hotkey">→</span> - Move between your connected Todo sources</li>
+</ul>
+
+
+<h3>Behind the scenes</h3>
+
+<p>When we add a new Todo integration our goal is to bring that service’s basic actions to your dashboard, so you can view, edit, and manage your tasks on the fly. As a result, your Todo retains Momentum’s familiar look and feel. The new <strong>View in [website]</strong> option gives you the ability to use the integrated service’s native environment to perform those more intricate changes and help manage the bigger picture. With the addition of integrated services, Momentum gives you a centralized place to focus and accomplish the day’s specific tasks to help you reach those bigger goals.</p>
+
+
+<h3>Stay tuned</h3>
+
+<p>The Asana integration is just around the corner, and we’re working on some <strong>Todoist</strong> integration improvements as well. Thanks to those who have gotten in touch with us.</p>
+
+<p>If you have a suggestion for a new integration or improvement, visit our <a href="https://get.momentumdash.help/hc/en-us/community/topics" target="_blank">Community page</a>.</p>
+	</div>
+
+	<p class="blog-author">
+		<img src="/img/team/bio-team.jpg" class="author-pic">The Momentum Team<span class="separator">&mdash;</span>August 10, 2017	</p>
+</section>
+
+<section class="next-articles">
+			<div class="list-item next-up">
+			<a href="/blog/bookmarks-bar-and-links">
+
+				<h4 class="blog-category heading"><span class="heading-wrapper"><span class="heading-title">Previous</span><span class="heading-highlight" style="background: #47a3cc"></span></span></h4>
+
+				<h3  style="color: #47a3cc;">Introducing the Bookmarks Bar</h3>
+
+				<p>See your bookmarks in Momentum, also Links widget updates!</p>
+
+				<h4 class="blog-category">news</h4>
+			</a>
+		</div><div class="list-item latest">
+			<a href="/blog/metrics">
+
+				<h4 class="blog-category heading"><span class="heading-wrapper"><span class="heading-title">Next</span><span class="heading-highlight" style="background: #204854"></span></span></h4>
+
+				<h3  style="color: #204854;">Metrics</h3>
+
+				<p>Track your daily water intake, Fitbit steps, stock prices and much more!</p>
+
+				<h4 class="blog-category">news</h4>
+			</a>
+		</div></section>
+
+<script>
+
+	function buildIframe(vimeoId) {
+		var iframe = document.createElement('iframe');
+			iframe.onload = function() {  }; // before setting 'src'
+			iframe.src = 'https://player.vimeo.com/video/' + vimeoId + '?autoplay=1&muted=1'
+			iframe.width=640
+			iframe.height=360
+			iframe.style="box-sizing: border-box;"
+			iframe.frameborder=0
+			iframe.setAttribute('webkitallowfullscreen', '')
+			iframe.setAttribute('mozallowfullscreen', '')
+			iframe.setAttribute('allowfullscreen', '')
+
+		return iframe
+	}
+
+	function buildCookiePrompt (vimeoId) {
+		return cookiePrompt = $('<div>', {id: 'cookie-prompt-' + vimeoId, class: 'cookie-prompt'})
+			.css({opacity: 0, display: 'flex'})
+			.append($('<p>').text('Vimeo player uses third-party cookies'))
+			.append($('<div>')
+				.append($('<span>', {class: 'button', text: 'I Understand', onclick: 'swapVideoContent(' + vimeoId + ')'}))
+			)
+	}
+
+	function swapVideoContent(vimeoId, skipCookiePrompt) {
+
+		var $div = $('#div-' + vimeoId)
+		$div.css({height: ($div.innerHeight() - 3) + 'px', width: $div.innerWidth() + 'px'})
+			.removeClass('cookie-prompt-active')
+			.find('img')
+			.css({ filter: '', position: 'absolute', top: 0, right: 0, bottom: 0, left: 0, 'z-index': '-1'})
+
+		if (skipCookiePrompt) {
+			var iframe = buildIframe(vimeoId)
+			$div.find('.title').css({opacity: 0})
+			$div.find('.play-button').fadeOut(200, function() {
+				$div.append(iframe);
+				$div.css({height: '', width: ''})
+			})
+		} else {
+			setLocalStorageToken()
+			$div.find('.cookie-prompt').fadeOut(500, function() {
+				var iframe = buildIframe(vimeoId)
+				$div.append(iframe);
+				$div.css({height: '', width: ''})
+			})
+		}
+	}
+
+	function displayCookiePrompt (vimeoId) {
+		var cookiePrompt = buildCookiePrompt(vimeoId)
+
+		var $div = $('#div-' + vimeoId)
+		$('#image-' + vimeoId).css({filter: "brightness(0.2)"}).removeAttr('onclick')
+		if($div) {
+			$div.find('.play-button').fadeOut(500)
+			$div.find('.title').css({opacity: 0})
+			$div.append(cookiePrompt.fadeTo(1000, 1, function() {
+				$div.addClass('cookie-prompt-active')
+			}))
+		}
+	}
+
+	function setLocalStorageToken() {
+		localStorage.setItem('acceptVimeoCookies', new Date())
+	}
+
+	function handleVideoClick(vimeoId) {
+		if (localStorage.getItem('acceptVimeoCookies')) {
+			swapVideoContent(vimeoId, true)
+		} else {
+			displayCookiePrompt(vimeoId)
+		}
+	}
+
+	</script>
+
+<div class="instagram">
+	<h3 class="instagram-heading"><a href="https://instagram.com/momentumdash">Follow us on Instagram <i class="fa fa-instagram" aria-hidden="true"></i></a></h3>
+
+	<div class="instagram-grid">
+	
+						<div class="instagram-item">
+						<div class="instagram-image" style="background-image: url('https://scontent.cdninstagram.com/v/t51.2885-15/sh0.08/e35/s640x640/82560617_707641909779371_3339170433044400458_n.jpg?_nc_ht=scontent.cdninstagram.com&_nc_ohc=Ptw-4cpL-PYAX_mT1Om&oh=7cffa1b3f2bd97994b7db8dea37705b3&oe=5F03349C');"></div>
+						<a class="instagram-link" target="blank" href="https://www.instagram.com/p/B8Mmko-hf53/"></a>
+						<p class="instagram-caption">Deep work ✨🧠 @andotherlawstories</p>
+					</div>
+										<div class="instagram-item">
+						<div class="instagram-image" style="background-image: url('https://scontent.cdninstagram.com/v/t51.2885-15/sh0.08/e35/s640x640/84640956_209647406747040_3810595933367095456_n.jpg?_nc_ht=scontent.cdninstagram.com&_nc_ohc=N3OCIF80cg8AX_xtONN&oh=8e8179816f57902adbf65a987d93a9ce&oe=5EBB07E3');"></div>
+						<a class="instagram-link" target="blank" href="https://www.instagram.com/p/B8CbqHVBDGS/"></a>
+						<p class="instagram-caption">&ldquo;You are not the work you do; you are the person you are.&rdquo; &ndash; Toni Morrison 📸 @xandrasun</p>
+					</div>
+										<div class="instagram-item">
+						<div class="instagram-image" style="background-image: url('https://scontent.cdninstagram.com/v/t51.2885-15/sh0.08/e35/p640x640/82333288_523239225217689_5394255128946401902_n.jpg?_nc_ht=scontent.cdninstagram.com&_nc_ohc=lnhAl8ie7NEAX-f7gYK&oh=9d4c6394a96206fda362ed2771fa0d8d&oe=5EC4405E');"></div>
+						<a class="instagram-link" target="blank" href="https://www.instagram.com/p/B715EzyBPq_/"></a>
+						<p class="instagram-caption">&ldquo;Don&rsquo;t be pushed around by the fears in your mind. Be led by the dreams in your heart&rdquo; &ndash; Roy T. Bennett ✨📸 @erubes1</p>
+					</div>
+										<div class="instagram-item">
+						<div class="instagram-image" style="background-image: url('https://scontent.cdninstagram.com/v/t51.2885-15/sh0.08/e35/s640x640/80808550_166941034586693_2091183233184376442_n.jpg?_nc_ht=scontent.cdninstagram.com&_nc_ohc=JeYSBEzK6f8AX8akcPU&oh=9a9937858767dc07169406965cef5d69&oe=5EBEF9C1');"></div>
+						<a class="instagram-link" target="blank" href="https://www.instagram.com/p/B7j8OMrhV4w/"></a>
+						<p class="instagram-caption">What are you learning about right now? 📸 @anamaria_studies</p>
+					</div>
+										<div class="instagram-item">
+						<div class="instagram-image" style="background-image: url('https://scontent.cdninstagram.com/v/t51.2885-15/sh0.08/e35/s640x640/82063484_707004123165443_3093523595890096006_n.jpg?_nc_ht=scontent.cdninstagram.com&_nc_ohc=-BgKmWCeeOEAX_6CQFy&oh=316939da92b47230c07da1f9048f1bff&oe=5EBA3264');"></div>
+						<a class="instagram-link" target="blank" href="https://www.instagram.com/p/B7R71PmB6sl/"></a>
+						<p class="instagram-caption">Reminder ☝🏼 📸 @thefemalewarhol</p>
+					</div>
+										<div class="instagram-item">
+						<div class="instagram-image" style="background-image: url('https://scontent.cdninstagram.com/v/t51.2885-15/sh0.08/e35/p640x640/81837714_468756467412340_1206215532620752635_n.jpg?_nc_ht=scontent.cdninstagram.com&_nc_ohc=_ZWgaR8k_FcAX9CaQGK&oh=1c56cbce954212e42df550a3e1ae4c5f&oe=5EC54365');"></div>
+						<a class="instagram-link" target="blank" href="https://www.instagram.com/p/B7PdSe5B93k/"></a>
+						<p class="instagram-caption">&ldquo;The most reliable way to predict the future is to create it.&rdquo; &ndash; Abraham Lincoln 📸 @megansstudies</p>
+					</div>
+										<div class="instagram-item">
+						<div class="instagram-image" style="background-image: url('https://scontent.cdninstagram.com/v/t51.2885-15/sh0.08/e35/s640x640/79344453_1320888134785281_7865912327801922427_n.jpg?_nc_ht=scontent.cdninstagram.com&_nc_ohc=EDHNsitjd54AX-q6Pyj&oh=3ecd056ea53e71796f7a4f15d02385b5&oe=5EC2B1F5');"></div>
+						<a class="instagram-link" target="blank" href="https://www.instagram.com/p/B6BykFeheeI/"></a>
+						<p class="instagram-caption">Friday reminder ☝🏼@lucialitman</p>
+					</div>
+										<div class="instagram-item">
+						<div class="instagram-image" style="background-image: url('https://scontent.cdninstagram.com/v/t51.2885-15/sh0.08/e35/p640x640/73480779_2374773782837482_8254884352042333952_n.jpg?_nc_ht=scontent.cdninstagram.com&_nc_ohc=6Mw7npAfwqsAX-uTHTW&oh=adde61b57df22e0e9c9b4fd3f09d0102&oe=5EC0469A');"></div>
+						<a class="instagram-link" target="blank" href="https://www.instagram.com/p/B5eAy8BBl5M/"></a>
+						<p class="instagram-caption">▪️BLACK FRIDAY SALE▪️Upgrade to Momentum PLUS for 25% OFF! Personalize your photos &amp; quotes, make multiple todo lists, sync with other task managers and more ✔️ Cli...</p>
+					</div>
+										<div class="instagram-item">
+						<div class="instagram-image" style="background-image: url('https://scontent.cdninstagram.com/v/t51.2885-15/sh0.08/e35/p640x640/73117210_465865420731565_825447745786841103_n.jpg?_nc_ht=scontent.cdninstagram.com&_nc_ohc=na4tcSZndrMAX96M9G5&oh=159eac199c03a1ef865f76711dfb19ea&oe=5EC577BB');"></div>
+						<a class="instagram-link" target="blank" href="https://www.instagram.com/p/B4yFabShsW7/"></a>
+						<p class="instagram-caption">You&rsquo;ll figure it out. 📸@werenotreallystrangers</p>
+					</div>
+										<div class="instagram-item">
+						<div class="instagram-image" style="background-image: url('https://scontent.cdninstagram.com/v/t51.2885-15/sh0.08/e35/p640x640/73385924_525706437988368_5877305391894999353_n.jpg?_nc_ht=scontent.cdninstagram.com&_nc_ohc=rcvjEoQ0SZUAX_FHxTU&oh=e6ed73417808947231cb59099f2941e1&oe=5ED1434F');"></div>
+						<a class="instagram-link" target="blank" href="https://www.instagram.com/p/B4lJwFdBsU2/"></a>
+						<p class="instagram-caption">Studying isn&rsquo;t so bad when it looks like this ✨💫🌙 @cupsandthoughts</p>
+					</div>
+					
+	</div>
+</div>
+
+
+<script>
+	$(function () {
+				$('.instagram-heading').click(function(e) {
+			ga('send', 'event', 'Social Click', 'Instagram', 'Blog Article', 'Follow Us Heading')
+		})
+
+		$('.instagram-item').click(function(e) {
+			ga('send', 'event', 'Social Click', 'Instagram', 'Blog Article', 'Photo Feed')
+		})
+	})
+</script>
+
+
+
+
+	<footer class="footer footer-blog">
+		<nav class="nav footer-nav">
+			<a href="/plus" class="">Plus</a><!--
+			--><a href="/about" class="">About</a><!--
+			--><a href="/blog" class="active">Blog</a><!--
+			--><a href="https://momentumdash.help">Help</a><!--
+			--><a href="/gift" class="">Gift</a><!--
+			--><a href="/contact" class="">Contact</a><!--
+			--><a href="/careers" class="accent-fg ">We’re Hiring!</a>
+		</nav>
+		<nav class="footer-secondary">
+			<span class="item">&copy; 2020 Momentum Dashboard Corp.</span><!--
+			--><span class="u--mobile-br"></span><!--
+			--><a href="/legal" class="item">Terms</a><!--
+			--><a href="/privacy" class="item">Privacy</a><!--
+			--><!--<a href="/advertise" class="item">Advertise</a>--><!--
+			--><a href="https://facebook.com/momentumdash" onclick="ga('send', 'event', 'Social Click', 'Facebook', 'Footer')" target="_blank" class="social item"><i class="fa fa-facebook"></i></a><!--
+			--><a href="https://twitter.com/momentumdash" onclick="ga('send', 'event', 'Social Click', 'Twitter', 'Footer')" target="_blank" class="social item"><i class="fa fa-twitter"></i></a><!--
+			--><a href="https://instagram.com/momentumdash" onclick="ga('send', 'event', 'Social Click', 'Instagram', 'Footer')" target="_blank" class="social item"><i class="fa fa-instagram"></i></a>
+		</nav>
+	</footer>
+
+	
+	<script>
+		if (window.jQuery) {
+			$(function () {
+				$(window).on('scroll', function (e) {
+					if ($(this).scrollTop() > 40) {
+						$('header').addClass('scrolled')
+					} else if ($(this).scrollTop() === 0) {
+						$('header').removeClass('scrolled')
+					}
+				})
+			})
+		}
+	</script>
+
+	<script src='/app/analytics.js'></script>
+
+	</body>
+</html>

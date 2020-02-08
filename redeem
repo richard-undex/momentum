@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Redeem gift of Momentum Plus</title>
+	<meta name="viewport" content="width=device-width">
+		<link href="/dist/js/chunk-vendors.80770947.js" rel=preload as=script>	<link href="/dist/js/redeem.b9c33be9.js" rel=preload as=script>	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="/css/inside.css?v=20190904">
+	<link rel="stylesheet" href="/css/header.css?v=20191212">
+	<link rel="stylesheet" href="/css/gift.css?v=20180525">
+	</head>
+<body class="gift gift-redeem ">
+		<header class="header has-background">
+		<h1 class="logo"><a href="/" class="accent-bg-img">Momentum Dash</a><img src="/img/logo-white.png"></h1>
+
+		<nav class="main-nav">
+			<a href="/plus">Plus</a>
+			<a href="/about">About</a>
+			<a href="/blog">Blog</a>
+		</nav>
+
+		<nav class="top-right chrome-store">
+			<a href="/gift">&larr; Gift Momentum Plus</a>
+		</nav>
+	</header>
+
+	<div id="app"></div>
+
+	<script type="text/javascript">
+				window.m = window.m || {}
+		window.m.urlRoot = 'https://api.momentumdash.com';
+		window.m.urlAccount = 'https://account.momentumdash.com';
+	</script>
+	<script src="/dist/js/chunk-vendors.80770947.js"></script>	<script src="/dist/js/redeem.b9c33be9.js"></script>
+	<footer class="footer footer-redeem">
+		<nav class="nav footer-nav">
+			<a href="/plus" class="">Plus</a><!--
+			--><a href="/about" class="">About</a><!--
+			--><a href="/blog" class="">Blog</a><!--
+			--><a href="https://momentumdash.help">Help</a><!--
+			--><a href="/gift" class="">Gift</a><!--
+			--><a href="/contact" class="">Contact</a><!--
+			--><a href="/careers" class="accent-fg ">We’re Hiring!</a>
+		</nav>
+		<nav class="footer-secondary">
+			<span class="item">&copy; 2020 Momentum Dashboard Corp.</span><!--
+			--><span class="u--mobile-br"></span><!--
+			--><a href="/legal" class="item">Terms</a><!--
+			--><a href="/privacy" class="item">Privacy</a><!--
+			--><!--<a href="/advertise" class="item">Advertise</a>--><!--
+			--><a href="https://facebook.com/momentumdash" onclick="ga('send', 'event', 'Social Click', 'Facebook', 'Footer')" target="_blank" class="social item"><i class="fa fa-facebook"></i></a><!--
+			--><a href="https://twitter.com/momentumdash" onclick="ga('send', 'event', 'Social Click', 'Twitter', 'Footer')" target="_blank" class="social item"><i class="fa fa-twitter"></i></a><!--
+			--><a href="https://instagram.com/momentumdash" onclick="ga('send', 'event', 'Social Click', 'Instagram', 'Footer')" target="_blank" class="social item"><i class="fa fa-instagram"></i></a>
+		</nav>
+	</footer>
+
+	
+	<script>
+		if (window.jQuery) {
+			$(function () {
+				$(window).on('scroll', function (e) {
+					if ($(this).scrollTop() > 40) {
+						$('header').addClass('scrolled')
+					} else if ($(this).scrollTop() === 0) {
+						$('header').removeClass('scrolled')
+					}
+				})
+			})
+		}
+	</script>
+
+	<script src='/app/analytics.js'></script>
+
+	</body>
+</html>

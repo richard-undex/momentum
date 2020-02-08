@@ -1,0 +1,139 @@
+// Load deferred css
+var link = document.createElement('link')
+link.setAttribute('rel', 'stylesheet')
+link.setAttribute('type', 'text/css')
+link.setAttribute('href', '/css/plus-deferred.css')
+document.getElementsByTagName('head')[0].appendChild(link)
+
+// Load deferred html
+var htmlLoaded = false
+callAjax('/plus-deferred.php', function (data) {
+	var div = document.getElementsByClassName('see-comparison')[0]
+	var bottom = document.createElement('div')
+	bottom.className = 'comparison-stage'
+	bottom.innerHTML = data
+	insertAfter(div, bottom)
+	htmlLoaded = true
+})
+
+// Load jQuery from CDN. If this fails, load local copy
+loadScript('https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js', setCheckInterval, loadLocalJquery);
+
+function loadLocalJquery() {
+	loadScript('/js/jquery.min.js', setCheckInterval)
+}
+
+function setCheckInterval() {
+	intervalId = setInterval(checkIfHtmlLoaded, 100)
+}
+
+// Make sure that deferred html is loaded before initializing plus page jQuery
+function checkIfHtmlLoaded() {
+	if (htmlLoaded) {
+		clearInterval(intervalId)
+		initPlusPage()
+	}
+}
+
+// JS for plus page
+function initPlusPage() {
+	/*! waitForImages jQuery Plugin 2016-01-04 (pasted from js/jquery.waitforimages.min.js) */
+	!function(a){"function"==typeof define&&define.amd?define(["jquery"],a):"object"==typeof exports?module.exports=a(require("jquery")):a(jQuery)}(function(a){var b="waitForImages";a.waitForImages={hasImageProperties:["backgroundImage","listStyleImage","borderImage","borderCornerImage","cursor"],hasImageAttributes:["srcset"]},a.expr[":"]["has-src"]=function(b){return a(b).is('img[src][src!=""]')},a.expr[":"].uncached=function(b){return a(b).is(":has-src")?!b.complete:!1},a.fn.waitForImages=function(){var c,d,e,f=0,g=0,h=a.Deferred();if(a.isPlainObject(arguments[0])?(e=arguments[0].waitForAll,d=arguments[0].each,c=arguments[0].finished):1===arguments.length&&"boolean"===a.type(arguments[0])?e=arguments[0]:(c=arguments[0],d=arguments[1],e=arguments[2]),c=c||a.noop,d=d||a.noop,e=!!e,!a.isFunction(c)||!a.isFunction(d))throw new TypeError("An invalid callback was supplied.");return this.each(function(){var i=a(this),j=[],k=a.waitForImages.hasImageProperties||[],l=a.waitForImages.hasImageAttributes||[],m=/url\(\s*(['"]?)(.*?)\1\s*\)/g;e?i.find("*").addBack().each(function(){var b=a(this);b.is("img:has-src")&&!b.is("[srcset]")&&j.push({src:b.attr("src"),element:b[0]}),a.each(k,function(a,c){var d,e=b.css(c);if(!e)return!0;for(;d=m.exec(e);)j.push({src:d[2],element:b[0]})}),a.each(l,function(a,c){var d=b.attr(c);return d?void j.push({src:b.attr("src"),srcset:b.attr("srcset"),element:b[0]}):!0})}):i.find("img:has-src").each(function(){j.push({src:this.src,element:this})}),f=j.length,g=0,0===f&&(c.call(i[0]),h.resolveWith(i[0])),a.each(j,function(e,j){var k=new Image,l="load."+b+" error."+b;a(k).one(l,function m(b){var e=[g,f,"load"==b.type];return g++,d.apply(j.element,e),h.notifyWith(j.element,e),a(this).off(l,m),g==f?(c.call(i[0]),h.resolveWith(i[0]),!1):void 0}),j.srcset&&(k.srcset=j.srcset),k.src=j.src})}),h.promise()}});
+
+	var $hero = $('.hero'),
+		$heroBg = $hero.find('.hero-bg'),
+		$comparison = $('.comparison'),
+		$comparisonButton = $comparison.find('.see-comparison-button'),
+		$comparisonStage = $comparison.find('.comparison-stage'),
+		$comparisonTable = $comparison.find('.comparison-table-wrapper'),
+		$comparisonHide = $comparison.find('.comparison-hide'),
+		bgLoaded = false
+
+	// Show hero background once image is fully loaded
+	$heroBg.waitForImages(function () {
+		bgLoaded = true
+		$hero.addClass('fadein')
+	}, $.noop, true)
+
+	// Show comparison table
+	$comparisonButton.click(function () {
+		showComparisonTable()
+	})
+
+	var showComparisonTable = function (instant) {
+		if (instant || !bgLoaded) {
+			setTimeout(function () {
+				$comparisonStage.removeClass('transition')
+				$comparisonButton.css('opacity', 0)
+				$comparisonStage.addClass('show').css('height', $comparisonTable.outerHeight(true))
+				$('html').scrollTop($comparisonTable.offset().top - 100)
+				$('body').addClass('show')
+				$comparisonStage.addClass('transition')
+			}, 0)
+		} else {
+			$comparisonButton.addClass('fadeout').removeClass('fadein')
+			$comparisonStage.addClass('show transition').css('height', $comparisonTable.outerHeight(true))
+			$("html, body").animate({ scrollTop: $comparisonTable.offset().top - 100 }, 1000)
+		}
+		window.location.hash = 'compare'
+		ga('send', 'event', 'Plus', 'Full feature comparison ', 'Show')
+	}
+
+	// Allow linking directly to the comparison table
+	if (window.location.hash === '#compare') {
+		showComparisonTable(true)
+	}
+
+	// Hide comparison table
+	$comparisonHide.click(function () {
+		if (bgLoaded) {
+			$comparisonButton.removeClass('fadeout').addClass('fadein')
+			$comparisonStage.removeClass('show').css('height', 0)
+			$("html, body").animate({ scrollTop: $comparison.offset().top - 100 }, 500)
+		} else {
+			$comparisonButton.css('opacity', 1)
+			$comparisonStage.removeClass('show transition').css('height', 0)
+			$('html').scrollTop($comparison.offset().top - 100)
+			$comparisonStage.addClass('transition')
+		}
+		removeHash()
+		ga('send', 'event', 'Plus', 'Full feature comparison ', 'Hide')
+	})
+
+	var removeHash = function () {
+		if (history.pushState) {
+			history.pushState('', document.title, window.location.pathname + window.location.search)
+		} else {
+			window.location.hash = ''
+		}
+	}
+}
+
+
+
+// Helper functions
+
+function callAjax(url, callback) {
+	var xmlhttp;
+	// compatible with IE7+, Firefox, Chrome, Opera, Safari
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function () {
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			callback(xmlhttp.responseText);
+		}
+	}
+	xmlhttp.open("GET", url, true);
+	xmlhttp.send();
+}
+
+function insertAfter(referenceNode, newNode) {
+	referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
+
+function loadScript(url, successCb, failCb) {
+	var script = document.createElement('script');
+	script.onload = successCb;
+	script.onerror = failCb;
+	script.src = url;
+	document.body.appendChild(script);
+}

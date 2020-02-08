@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+  <meta charset="utf-8" />
+  <!-- v17501 -->
+
+  <title>Help Center</title>
+
+  <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="" />
+  <link rel="canonical" href="https://get.momentumdash.help/hc/en-us" />
+<link rel="alternate" hreflang="en" href="https://get.momentumdash.help/hc/en-us" />
+
+  <link rel="stylesheet" media="all" href="//static.zdassets.com/hc/assets/application-f358d66b3ee9fc9e44e5a9873ac253e3.css" id="stylesheet" />
+    <!-- Entypo pictograms by Daniel Bruce — www.entypo.com -->
+    <link rel="stylesheet" media="all" href="//static.zdassets.com/hc/assets/theming_v1_support-5b35ea09e7cb00f0c6171ae9183b59c7.css" />
+  <link rel="stylesheet" type="text/css" href="//p14.zdassets.com/hc/theming_assets/1607555/5079027/style.css?digest=360332400133" />
+
+  <link rel="shortcut icon" type="image/x-icon" href="//theme.zdassets.com/theme_assets/1607555/0554e1ff2a30edc06f6953f741340306ba6297ac.png" />
+
+    <script src="//static.zdassets.com/hc/assets/jquery-d5395f0b7ac5027403fc17855c46dbfc.js"></script>
+    <script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+ (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+ })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-44319322-12', 'auto');
+ga('send', 'pageview');
+
+</script>
+
+    
+
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport" />
+<meta name="google-site-verification" content="jQxt3rEmCYRBaOf0XjMgJMAawn7fUJZD7J5f3n8OOtI" />
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <script type="text/javascript" src="//p14.zdassets.com/hc/theming_assets/1607555/5079027/script.js?digest=360332400133"></script>
+</head>
+<body class="community-enabled">
+  
+  
+
+  <header class="header">
+    <div class="wrapper header-wrapper">
+        <h1 class="logo"><a href="/" class="accent-bg-img">Momentum Dashboard</a>
+            <img src="//theme.zdassets.com/theme_assets/1607555/1f4331365fa622e485ddf1b2dd043fbd39f2b460.png">
+        </h1>
+
+        <nav class="main-nav">
+          <a href="https://momentumdash.com/plus" class="plus">Plus</a>
+          <a href="https://momentumdash.com/about">About</a>
+          <a href="https://momentumdash.com/blog">Blog</a>
+        </nav>
+      
+        <nav class="top-right">
+            <!--<span class="icon-menu"></span>-->
+            <nav class="user-nav" id="user-nav">
+              <!--<a href="/hc/en-us/community/topics">Community</a>-->
+              <a class="submit-a-request" href="/hc/en-us/requests/new">Submit a request</a>
+            </nav>
+              <a class="login" data-auth-action="signin" role="button" rel="nofollow" title="Opens a dialog" href="/hc/en-us/signin?return_to=https%3A%2F%2Fget.momentumdash.help%2Fhc%2Fen-us&amp;locale=en-us">Sign in</a>
+
+        </nav>
+
+    </div> <!-- /header-wrapper -->
+</header>
+
+
+  <main role="main">
+    
+
+
+<section class="section hero hero-home">
+  <div class="hero-inner">
+    <h1>How can we help you?</h1>
+    <form role="search" class="search search-full" data-search="" data-instant="true" autocomplete="off" action="/hc/en-us/search" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" /><input type="search" name="query" id="query" placeholder="Search" autocomplete="off" aria-label="Search" /></form>
+  </div>
+</section>
+
+<div class="container">
+  
+
+  <section class="section knowledge-base">
+    <section class="category-buttons"><!--
+        
+          
+						
+      			--><a href="/hc/en-us/categories/115001268608-Getting-Started" class="category-button">
+              <div class="inner-wrap">
+                Getting Started
+              </div>
+            </a><!--
+						
+          
+        
+          
+						
+      			--><a href="/hc/en-us/categories/115001272207-FAQs-Troubleshooting" class="category-button">
+              <div class="inner-wrap">
+                FAQs + Troubleshooting
+              </div>
+            </a><!--
+						
+          
+        
+          
+						
+      			--><a href="/hc/en-us/categories/115001272227-Momentum-Plus" class="category-button">
+              <div class="inner-wrap">
+                Momentum Plus
+              </div>
+            </a><!--
+						
+          
+        
+          
+						
+          
+        
+				-->
+      
+    </section>
+
+    
+      <section class="articles">
+        <h3>Featured Articles</h3>
+        <ul class="article-list promoted-articles">
+          
+            <li class="promoted-articles-item">
+              <a href="/hc/en-us/articles/115007780748-About-Momentum">
+                About Momentum
+              </a>
+            </li>
+          
+            <li class="promoted-articles-item">
+              <a href="/hc/en-us/articles/360003766113-Quick-Start-Guide">
+                Quick Start Guide
+              </a>
+            </li>
+          
+            <li class="promoted-articles-item">
+              <a href="/hc/en-us/articles/360019099073-Navigating-Momentum">
+                Navigating Momentum
+              </a>
+            </li>
+          
+            <li class="promoted-articles-item">
+              <a href="/hc/en-us/articles/115015748548-Momentum-Plus-Overview">
+                Momentum Plus Overview
+              </a>
+            </li>
+          
+        </ul>
+        <div class="u--clear"></div>
+      </section>
+    
+  </section>
+
+  
+    <section class="section community">
+    	<!--
+      <h2>Community</h2>
+      <a class="community-link" href="/hc/en-us/community/topics">
+        Join the conversation
+      </a>
+
+      <div class="community-image"></div>
+			-->
+      <strong>Have a suggestion?</strong> Visit our <strong><a href="https://suggestions.momentumdash.help/">Suggestion Forum</a></strong>
+    </section>
+  
+
+  <section class="section activity">
+    <div data-app="recent-activity" data-url="/hc/api/internal/recent_activities?locale=en-us"></div>
+  </section>
+</div>
+
+  </main>
+
+  <footer class="footer footer-about">
+  <nav class="nav footer-nav">
+      <a href="https://momentumdash.com/plus">Plus</a><!--
+      --><a href="https://momentumdash.com/about">About</a><!--
+      --><a href="https://momentumdash.com/blog">Blog</a><!--
+      --><a href="/" class="active">Help</a><!--
+      --><a href="https://momentumdash.com/gift">Gift</a><!--
+      --><a href="https://momentumdash.com/contact">Contact</a><!--
+      --><a href="https://momentumdash.com/careers" class="were-hiring">We're Hiring!</a>
+  </nav>
+
+  <nav class="footer-secondary">
+      <span class="item">&copy; 2019 Momentum Dashboard Corp.</span><!--
+      --><a href="https://momentumdash.com/legal" class="item">Terms</a><!--
+      --><a href="https://momentumdash.com/privacy" class="item">Privacy</a><!--
+      --><a href="http://facebook.com/momentumdash" onclick="ga('send', 'event', 'Social Click', 'Facebook')" target="_blank" class="social item"><i class="fa fa-facebook"></i></a><!--
+      --><a href="http://twitter.com/momentumdash" onclick="ga('send', 'event', 'Social Click', 'Twitter')"target="_blank" class="social item"><i class="fa fa-twitter"></i></a>
+  </nav>
+</footer>
+  
+<!--
+<div class="footer-language-selector">
+  
+</div>
+-->
+
+
+  <!-- / -->
+  
+  <script src="//static.zdassets.com/hc/assets/en-us.68fe4d7238e8c893fc75.js"></script>
+  <script src="https://momentumdash.zendesk.com/auth/v2/host.js" data-brand-id="5079027" data-return-to="https://get.momentumdash.help/hc/en-us" data-theme="hc" data-locale="en-us" data-auth-origin="5079027,true,true"></script>
+
+  <script type="text/javascript">
+  /*
+
+    Greetings sourcecode lurker!
+
+    This is for internal Zendesk and legacy usage,
+    we don't support or guarantee any of these values
+    so please don't build stuff on top of them.
+
+  */
+
+  HelpCenter = {};
+  HelpCenter.account = {"subdomain":"momentumdash","environment":"production","name":"Momentum Dashboard"};
+  HelpCenter.user = {"identifier":"da39a3ee5e6b4b0d3255bfef95601890afd80709","email":null,"name":null,"role":"anonymous","avatar_url":"https://assets.zendesk.com/hc/assets/default_avatar.png","is_admin":false,"organizations":[],"groups":[]};
+  HelpCenter.internal = {"asset_url":"//static.zdassets.com/hc/assets/","web_widget_asset_composer_url":"https://static.zdassets.com/ekr/snippet.js","current_session":{"locale":"en-us","csrf_token":null,"shared_csrf_token":null},"settings":{"zopim_enabled":false},"usage_tracking":{"event":"front_page_viewed","data":"BAh7BjoKX21ldGF7CzoPYWNjb3VudF9pZGkDg4cYOhNoZWxwX2NlbnRlcl9pZGwrCMtcisYaADoNYnJhbmRfaWRpA/N/TToMdXNlcl9pZDA6DnVzZXJfcm9sZUkiDmFub255bW91cwY6BkVUOgtsb2NhbGVJIgplbi11cwY7C1Q=--1e88bf607417646f239637f3f2bc1a7236768655","url":"https://get.momentumdash.help/hc/tracking/events?locale=en-us"},"current_record_id":null,"current_record_url":null,"current_record_title":null,"search_results_count":null,"current_text_direction":"ltr","current_brand_url":"https://momentumdash.zendesk.com","current_host_mapping":"get.momentumdash.help","current_path":null,"authentication_domain":"https://momentumdash.zendesk.com","show_autocomplete_breadcrumbs":true,"rollbar_config":{"enabled":true,"endpoint":"https://rollbar-us.zendesk.com/api/1/item/","accessToken":"731a5a953e9a4b7ab6cac9623f50c732","captureUncaught":true,"captureUnhandledRejections":true,"payload":{"environment":"production","client":{"javascript":{"source_map_enabled":true,"code_version":"9cc9290f3a76b46a8d0d488b6a66600f4cb69049","guess_uncaught_frames":true}}}},"user_info_changing_enabled":false,"has_user_profiles_enabled":true,"user_aliases_enabled":false,"has_anonymous_kb_voting":true,"has_multi_language_help_center":false,"mobile_device":false,"mobile_site_enabled":false,"show_at_mentions":true,"embeddables_config":{"embeddables_web_widget":false,"embeddables_connect_ipms":false},"base_domain":"zendesk.com","answer_bot_subdomain":"static","plans_url":"https://get.momentumdash.help/hc/admin/plan?locale=en-us","manage_content_url":"https://get.momentumdash.help/hc/en-us","arrange_content_url":"https://get.momentumdash.help/hc/admin/arrange_contents?locale=en-us","general_settings_url":"https://get.momentumdash.help/hc/admin/general_settings?locale=en-us","user_segments_url":"https://momentumdash.zendesk.com/knowledge/user_segments?brand_id=5079027","has_community_enabled":true,"has_user_segments":true,"has_answer_bot_web_form_enabled":false,"billing_url":"/access/return_to?return_to=https://momentumdash.zendesk.com/admin/billing/subscription","has_answer_bot":true,"has_block_answer_bot_embeddable":false,"answer_bot_management_url":"/access/return_to?return_to=https://momentumdash.zendesk.com/agent/admin/answer_bot","is_account_owner":false,"theming_cookie_key":"hc-da39a3ee5e6b4b0d3255bfef95601890afd807091-preview","is_preview":false,"has_guide_user_segments_search":true,"has_alternate_templates":false,"arrange_articles_url":"https://momentumdash.zendesk.com/knowledge/arrange?brand_id=5079027","article_verification_url":"https://momentumdash.zendesk.com/knowledge/verification?brand_id=5079027","has_article_verification":false,"guide_language_settings_url":"https://get.momentumdash.help/hc/admin/language_settings?locale=en-us","docs_importer_url":"https://momentumdash.zendesk.com/knowledge/import_articles?brand_id=5079027","community_settings_url":"https://momentumdash.zendesk.com/knowledge/community_settings?brand_id=5079027","gather_plan_state":"subscribed","search_settings_url":"https://momentumdash.zendesk.com/knowledge/search_settings?brand_id=5079027","has_multibrand_search_in_plan":false,"theming_api_version":1,"has_merged_stats_endpoints":false,"has_pci_credit_card_custom_field":false,"current_brand_id":5079027,"help_center_restricted":false,"current_brand_active":true,"is_assuming_someone_else":false,"has_assume_csrf_protection":true,"flash_messages":[]};
+</script>
+
+  <script src="//static.zdassets.com/hc/assets/moment-f6f8513da6ab17eadada59a1a4edb536.js"></script>
+  <script src="//static.zdassets.com/hc/assets/hc_enduser-103a088ca4d0c9de9aead8ab02d9b1e0.js"></script>
+  
+</body>
+</html>
